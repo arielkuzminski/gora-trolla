@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Concerts – Góra Trolla | Early Music Ensemble</title>
+  <meta name="description" content="Upcoming and past concerts by the Góra Trolla early music ensemble — medieval, Renaissance and Baroque music performed live.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://goratrolla.pl/en/concerts.html">
+  <link rel="alternate" hreflang="pl" href="https://goratrolla.pl/koncerty.html">
+  <link rel="alternate" hreflang="en" href="https://goratrolla.pl/en/concerts.html">
+  <link rel="alternate" hreflang="x-default" href="https://goratrolla.pl/koncerty.html">
+  <meta property="og:locale" content="en_US">
+  <link rel="icon" href="../assets/images/icons/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=MedievalSharp&display=swap" rel="stylesheet">
+  <style>
+    :root{--color-void:#0a0806;--color-parchment:#f2e8d0;--nav-height:80px}
+    body{background:var(--color-void);color:var(--color-parchment);margin:0}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-height)}
+  </style>
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="nav" role="banner">
+    <div class="nav__inner">
+      <a href="./" class="nav__logo" aria-label="Góra Trolla — Home">
+        <img src="../assets/images/icons/logo-troll.jpg" alt="" class="nav__logo-mark" width="36" height="36" aria-hidden="true" style="border-radius:50%;object-fit:cover;filter:brightness(0.9) contrast(1.1);">
+        <div class="nav__logo-text">Góra Trolla<span>Early Music</span></div>
+      </a>
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-links" class="nav__links" role="navigation" aria-label="Main navigation">
+        <a href="./"              class="nav__link">Home</a>
+        <a href="about.html"    class="nav__link">About</a>
+        <a href="concerts.html" class="nav__link" aria-current="page">Concerts</a>
+        <a href="contact.html"  class="nav__link">Contact</a>
+        <div class="lang-switcher" role="group" aria-label="Language">
+          <a href="../koncerty.html"      hreflang="pl" class="lang-btn">PL</a>
+          <span aria-hidden="true">|</span>
+          <a href="concerts.html"   hreflang="en" class="lang-btn lang-btn--active" aria-current="true">EN</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="page-hero" style="background:linear-gradient(to bottom,rgba(10,8,6,0.3) 0%,rgba(10,8,6,0.75) 60%,rgba(10,8,6,0.97) 100%),linear-gradient(135deg,#201408 0%,#150d06 50%,#0d0806 100%);padding-top:var(--nav-height)">
+      <div class="page-hero__content container">
+        <p class="t-eyebrow" style="margin-bottom:var(--space-3)">Musical Calendar</p>
+        <h1 class="page-hero__title">Concerts</h1>
+        <span class="page-hero__title-underline"></span>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="concerts-heading">
+      <div class="container">
+        <h2 id="concerts-heading" class="visually-hidden">Concert List</h2>
+        <div class="filter-bar" role="group" aria-label="Filter concerts">
+          <div class="filter-group">
+            <span class="filter-group__label">Time</span>
+            <button class="filter-btn" data-filter-group="time" data-filter-value="all"      aria-pressed="true">All</button>
+            <button class="filter-btn" data-filter-group="time" data-filter-value="upcoming" aria-pressed="false">Upcoming</button>
+            <button class="filter-btn" data-filter-group="time" data-filter-value="past"     aria-pressed="false">Past</button>
+          </div>
+          <div class="filter-group">
+            <span class="filter-group__label">Type</span>
+            <button class="filter-btn" data-filter-group="type" data-filter-value="all"     aria-pressed="true">All</button>
+            <button class="filter-btn" data-filter-group="type" data-filter-value="sacred"  aria-pressed="false">Sacred</button>
+            <button class="filter-btn" data-filter-group="type" data-filter-value="secular" aria-pressed="false">Secular</button>
+            <button class="filter-btn" data-filter-group="type" data-filter-value="chamber" aria-pressed="false">Chamber</button>
+          </div>
+          <div class="filter-group">
+            <span class="filter-group__label">Period</span>
+            <button class="filter-btn" data-filter-group="period" data-filter-value="all"         aria-pressed="true">All</button>
+            <button class="filter-btn" data-filter-group="period" data-filter-value="medieval"    aria-pressed="false">Medieval</button>
+            <button class="filter-btn" data-filter-group="period" data-filter-value="renaissance" aria-pressed="false">Renaissance</button>
+            <button class="filter-btn" data-filter-group="period" data-filter-value="baroque"     aria-pressed="false">Baroque</button>
+          </div>
+        </div>
+        <div id="concert-list" aria-live="polite" aria-label="Concert list" style="display:flex;flex-direction:column;gap:var(--space-4)"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__brand"><div class="footer__logo-text">Góra Trolla</div><div class="footer__tagline">Early Music</div></div>
+      <div class="footer__candle" aria-hidden="true">
+        <svg class="candle__flame" width="18" height="28" viewBox="0 0 18 28" fill="none"><path d="M9 2 C6 6 3 10 3 15 C3 20 6 24 9 26 C12 24 15 20 15 15 C15 10 12 6 9 2Z" fill="#d4a843" opacity="0.9"/></svg>
+        <svg width="12" height="40" viewBox="0 0 12 40" fill="none"><rect x="3" y="0" width="6" height="38" rx="1" fill="#3a3020" stroke="#d4a843" stroke-width="0.5"/><line x1="0" y1="38" x2="12" y2="38" stroke="#d4a843" stroke-width="1"/></svg>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="concerts.html">Concerts</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="footer__bottom"><span>© <span id="year"></span> Góra Trolla</span><span>All rights reserved</span></div>
+  </footer>
+
+  <script type="application/json" id="concert-data">
+  [
+    {"id":"2026-04-25-rumia","title":{"pl":"Festiwal Historyczny — Pieśni Cysterskie","en":"Historical Festival — Cistercian Songs"},"date":"2026-04-25T16:00:00","venue":{"pl":"Ruiny kościoła cysterskiego, ul. Kościelna 19","en":"Cistercian Church Ruins, ul. Kościelna 19"},"city":"Rumia","type":"sacred","period":"medieval","free":true,"ticketUrl":null,"poster":"../assets/images/gallery/concert-rumia-2026.jpg","description":{"pl":"Z okazji otwarcia ruin cysterskiego kościoła po rewitalizacji — wioska historyczna, pokazy rycerskie, pochód z pochodniami i koncert pieśni cysterskich.","en":"Celebrating the reopening of Cistercian church ruins after renovation — historical village, knight shows, torchlit procession and concert of Cistercian songs."}},
+    {"id":"2026-05-22-krakow","title":{"pl":"Pieśni Wiosenne — Trubadurzy i Truwerzy","en":"Spring Songs — Troubadours & Trouvères"},"date":"2026-05-22T19:00:00","venue":{"pl":"Kościół Bożego Ciała","en":"Corpus Christi Church"},"city":"Kraków","type":"sacred","period":"medieval","free":true,"ticketUrl":null,"description":{"pl":"Recital pieśni prowansalskich i północnofrancuskich XIII wieku.","en":"A recital of Provençal and Northern French songs from the 13th century."}},
+    {"id":"2026-06-14-warszawa","title":{"pl":"Muzyka Dworska Renesansu","en":"Renaissance Court Music"},"date":"2026-06-14T18:30:00","venue":{"pl":"Zamek Królewski — Sala Rycerska","en":"Royal Castle — Knight's Hall"},"city":"Warszawa","type":"secular","period":"renaissance","free":false,"ticketUrl":"https://bilety.pl/goratrolla","description":{"pl":"Chansons, ballady i tańce z XVI-wiecznych dworów europejskich.","en":"Chansons, ballads and dances from 16th-century European courts."}},
+    {"id":"2026-07-04-gdansk","title":{"pl":"Vox Angelica — Muzyka Sacra Baroku","en":"Vox Angelica — Baroque Sacred Music"},"date":"2026-07-04T20:00:00","venue":{"pl":"Bazylika Mariacka","en":"St. Mary's Basilica"},"city":"Gdańsk","type":"sacred","period":"baroque","free":true,"ticketUrl":null,"description":{"pl":"Motety i arie z dzieł Schütza, Buxtehudego i Pachelbela.","en":"Motets and arias from works by Schütz, Buxtehude and Pachelbel."}},
+    {"id":"2026-08-20-poznan","title":{"pl":"Musica Ficta — Polifonia Średniowiecza","en":"Musica Ficta — Medieval Polyphony"},"date":"2026-08-20T19:30:00","venue":{"pl":"Katedra Poznańska","en":"Poznań Cathedral"},"city":"Poznań","type":"sacred","period":"medieval","free":true,"ticketUrl":null,"description":{"pl":"Organum, motety i conductus z rękopisów Notre Dame.","en":"Organum, motets and conductus from Notre Dame manuscripts."}},
+    {"id":"2025-11-15-krakow","title":{"pl":"Advent w Muzyce Dawnej","en":"Advent in Early Music"},"date":"2025-11-15T18:00:00","venue":{"pl":"Kościół św. Katarzyny","en":"St. Catherine's Church"},"city":"Kraków","type":"sacred","period":"renaissance","free":true,"ticketUrl":null,"description":{"pl":"Muzyka adwentowa od Perotin po Palestriny.","en":"Advent music from Perotin to Palestrina."}},
+    {"id":"2025-09-06-wroclaw","title":{"pl":"Minnesang — Pieśni Rycerskie","en":"Minnesang — Songs of Knighthood"},"date":"2025-09-06T19:00:00","venue":{"pl":"Pałac Hatzfeldów","en":"Hatzfeld Palace"},"city":"Wrocław","type":"secular","period":"medieval","free":false,"ticketUrl":"https://bilety.pl/goratrolla-wroclaw","description":{"pl":"Lieder minnesingerów z XII–XIII wieku.","en":"Minnesingers' songs from the 12th–13th centuries."}}
+  ]
+  </script>
+
+  <script src="../assets/js/nav.js"      defer></script>
+  <script src="../assets/js/concerts.js" defer></script>
+  <script src="../assets/js/lightbox.js" defer></script>
+  <script src="../assets/js/main.js"     defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      localStorage.setItem('gt-lang', 'en');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Góra Trolla – Early Music Ensemble | Home</title>
+  <meta name="description" content="Góra Trolla is a Polish early music ensemble specializing in medieval, Renaissance and Baroque repertoire. Concerts, music, history.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://goratrolla.pl/en/">
+  <link rel="alternate" hreflang="pl" href="https://goratrolla.pl/">
+  <link rel="alternate" hreflang="en" href="https://goratrolla.pl/en/">
+  <link rel="alternate" hreflang="x-default" href="https://goratrolla.pl/">
+
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Góra Trolla – Early Music Ensemble">
+  <meta property="og:description" content="Polish early music ensemble — medieval, Renaissance and Baroque repertoire.">
+  <meta property="og:image"       content="https://goratrolla.pl/assets/images/icons/og-image.jpg">
+  <meta property="og:locale"      content="en_US">
+  <meta property="og:site_name"   content="Góra Trolla">
+
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Góra Trolla – Early Music Ensemble">
+  <meta name="twitter:description" content="Polish early music ensemble — medieval, Renaissance and Baroque repertoire.">
+  <meta name="twitter:image"       content="https://goratrolla.pl/assets/images/icons/og-image.jpg">
+
+  <link rel="icon" href="../assets/images/icons/logo.svg" type="image/svg+xml">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=MedievalSharp&display=swap" rel="stylesheet">
+
+  <style>
+    :root{--color-void:#0a0806;--color-parchment:#f2e8d0;--nav-height:80px}
+    body{background:var(--color-void);color:var(--color-parchment);margin:0}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-height)}
+    .hero{min-height:100svh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  </style>
+  <link rel="stylesheet" href="../assets/css/main.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Góra Trolla",
+    "alternateName": "Góra Trolla Early Music Ensemble",
+    "description": "Polish early music ensemble specializing in medieval, Renaissance and Baroque repertoire.",
+    "url": "https://goratrolla.pl",
+    "logo": "https://goratrolla.pl/assets/images/icons/logo.svg",
+    "genre": ["Early Music", "Medieval Music", "Renaissance Music", "Baroque Music"],
+    "foundingLocation": { "@type": "Place", "addressCountry": "PL" }
+  }
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="nav" role="banner">
+    <div class="nav__inner">
+      <a href="./" class="nav__logo" aria-label="Góra Trolla — Home">
+        <img src="../assets/images/icons/logo-troll.jpg" alt="" class="nav__logo-mark" width="36" height="36" aria-hidden="true" style="border-radius:50%;object-fit:cover;filter:brightness(0.9) contrast(1.1);">
+        <div class="nav__logo-text">
+          Góra Trolla
+          <span>Early Music</span>
+        </div>
+      </a>
+      <button class="nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-links" class="nav__links" role="navigation" aria-label="Main navigation">
+        <a href="./"              class="nav__link" aria-current="page">Home</a>
+        <a href="about.html"    class="nav__link">About</a>
+        <a href="concerts.html" class="nav__link">Concerts</a>
+        <a href="contact.html"  class="nav__link">Contact</a>
+        <div class="lang-switcher" role="group" aria-label="Language selection">
+          <a href="../index.html"     hreflang="pl" class="lang-btn">PL</a>
+          <span aria-hidden="true">|</span>
+          <a href="./"  hreflang="en" class="lang-btn lang-btn--active" aria-current="true">EN</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="hero" aria-label="Main banner">
+      <div class="hero__bg" aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;">
+        <img src="../assets/images/hero/hero-bg.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0.45;display:block;">
+        <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(26,18,8,0.55) 0%,rgba(10,8,6,0.4) 50%,rgba(18,8,8,0.6) 100%);"></div>
+      </div>
+      <div aria-hidden="true" style="position:absolute;inset:0;background:url('../assets/images/textures/noise.svg') repeat;opacity:0.04;pointer-events:none;z-index:1"></div>
+      <canvas id="hero-particles" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none"></canvas>
+
+      <svg class="hero-ornament hero-ornament--tl" width="80" height="80" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+        <path d="M4 4 L40 4 M4 4 L4 40" stroke="#d4a843" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="4" cy="4" r="3" fill="#d4a843" opacity="0.7"/>
+      </svg>
+      <svg class="hero-ornament hero-ornament--tr" width="80" height="80" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+        <path d="M4 4 L40 4 M4 4 L4 40" stroke="#d4a843" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="4" cy="4" r="3" fill="#d4a843" opacity="0.7"/>
+      </svg>
+      <svg class="hero-ornament hero-ornament--bl" width="80" height="80" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+        <path d="M4 4 L40 4 M4 4 L4 40" stroke="#d4a843" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="4" cy="4" r="3" fill="#d4a843" opacity="0.7"/>
+      </svg>
+      <svg class="hero-ornament hero-ornament--br" width="80" height="80" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+        <path d="M4 4 L40 4 M4 4 L4 40" stroke="#d4a843" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="4" cy="4" r="3" fill="#d4a843" opacity="0.7"/>
+      </svg>
+
+      <div class="hero__content" style="position:relative;z-index:3;text-align:center;padding:var(--space-8) var(--space-6);max-width:900px">
+        <p class="t-eyebrow" style="margin-bottom:var(--space-6);animation:fadeIn 1s ease both">Early Music Ensemble</p>
+        <h1 class="t-hero t-hero--animated" style="margin-bottom:var(--space-8);animation:fadeUp 1.2s ease 0.2s both">Góra Trolla</h1>
+        <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;gap:var(--space-4);margin-bottom:var(--space-10);animation:fadeIn 1s ease 0.6s both">
+          <div style="height:1px;width:60px;background:linear-gradient(to right,transparent,var(--color-gold-bright))"></div>
+          <span style="color:var(--color-gold-bright);font-size:1.2rem">✦</span>
+          <div style="height:1px;width:60px;background:linear-gradient(to left,transparent,var(--color-gold-bright))"></div>
+        </div>
+        <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;animation:fadeUp 1s ease 0.8s both">
+          <a href="concerts.html" class="btn btn--primary btn--shimmer">Our Concerts</a>
+          <a href="about.html"    class="btn btn--ghost">About Us</a>
+        </div>
+      </div>
+
+      <div class="scroll-indicator" style="position:absolute;bottom:var(--space-8);left:50%;transform:translateX(-50%);z-index:3" aria-hidden="true">
+        <svg class="scroll-indicator__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="intro-heading">
+      <div class="container">
+        <div class="grid-2" style="align-items:center;gap:clamp(var(--space-12),6vw,var(--space-24))">
+          <div data-animate="fade-up">
+            <p class="section-label">About the Ensemble</p>
+            <h2 id="intro-heading" style="margin-bottom:var(--space-6)">Sounds of Bygone Ages</h2>
+            <p class="drop-cap" style="font-size:var(--text-lg);line-height:var(--leading-loose)">
+              Góra Trolla is an ensemble of artists fascinated by music from centuries past.
+              We combine authentic instrumentation and performance techniques with a passion
+              for discovering the forgotten beauty of early music.
+            </p>
+            <p style="margin-top:var(--space-4)">
+              Our repertoire spans troubadour songs, Gregorian chant, Renaissance polyphonic
+              motets and Baroque music dramas. Every concert is a journey through time —
+              told in sound.
+            </p>
+            <a href="about.html" class="btn btn--ghost" style="margin-top:var(--space-8)">Learn more about us</a>
+          </div>
+          <div data-animate="slide-right" style="position:relative">
+            <div style="aspect-ratio:4/5;background:linear-gradient(135deg,var(--color-obsidian),var(--color-stone));border:var(--border-gold);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden">
+              <span style="color:var(--color-faded);font-family:var(--font-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-caps)">ENSEMBLE PHOTO</span>
+              <div aria-hidden="true" style="position:absolute;inset:12px;border:1px solid rgba(212,168,67,0.15);border-radius:4px;pointer-events:none"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(90,60,10,0.15) 0%,transparent 70%),var(--color-void);text-align:center" aria-label="Quote">
+      <div class="container container--narrow">
+        <div data-animate="fade-in">
+          <div aria-hidden="true" style="margin-bottom:var(--space-6);color:var(--color-gold-bright);opacity:0.5;font-size:2.5rem">𝄞</div>
+          <blockquote>
+            <p class="t-quote" style="margin-inline:auto;max-width:680px">
+              "Music is the arithmetic of sounds, as optics is the geometry of light."
+            </p>
+            <footer style="margin-top:var(--space-6)">
+              <cite style="font-family:var(--font-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--color-faded);font-style:normal">— Claude Debussy</cite>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <div class="footer__logo-text">Góra Trolla</div>
+        <div class="footer__tagline">Early Music</div>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/goratrolla" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/goratrolla" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__candle" aria-hidden="true">
+        <svg class="candle__flame" width="18" height="28" viewBox="0 0 18 28" fill="none"><path d="M9 2 C6 6 3 10 3 15 C3 20 6 24 9 26 C12 24 15 20 15 15 C15 10 12 6 9 2Z" fill="#d4a843" opacity="0.9"/></svg>
+        <svg width="12" height="40" viewBox="0 0 12 40" fill="none"><rect x="3" y="0" width="6" height="38" rx="1" fill="#3a3020" stroke="#d4a843" stroke-width="0.5"/><line x1="0" y1="38" x2="12" y2="38" stroke="#d4a843" stroke-width="1"/></svg>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="./">Home</a>
+        <a href="about.html">About</a>
+        <a href="concerts.html">Concerts</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year"></span> Góra Trolla</span>
+      <span>All rights reserved</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/nav.js"       defer></script>
+  <script src="../assets/js/particles.js" defer></script>
+  <script src="../assets/js/main.js"      defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      localStorage.setItem('gt-lang', 'en');
+    });
+  </script>
+</body>
+</html>

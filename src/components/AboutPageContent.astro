@@ -1,0 +1,306 @@
+---
+import Footer from './Footer.astro';
+import GalleryItem from './GalleryItem.astro';
+import MusicianCard from './MusicianCard.astro';
+import Nav from './Nav.astro';
+import { musicians } from '../data/musicians';
+
+interface Props {
+  lang: 'pl' | 'en';
+}
+
+const { lang } = Astro.props;
+
+const musicianMeta = {
+  pl: {
+    Ariel: { instrument: 'Dudy, szałamaje, flety', moreLabel: 'Więcej o Arielu' },
+    'Rafał': { instrument: 'Buzuki irlandzkie, flety', moreLabel: 'Więcej o Rafale' },
+    Krzysztof: { instrument: 'Mandola', moreLabel: 'Więcej o Krzysztofie' },
+    'Jędrzej': { instrument: 'Davul', moreLabel: 'Więcej o Jędrzeju' },
+    Maciej: { instrument: 'Wodzirej', moreLabel: 'Więcej o Macieju' },
+    Jasio: { instrument: 'Człowiek orkiestra', moreLabel: 'Więcej o Jasiu' },
+  },
+  en: {
+    Ariel: { instrument: 'Bagpipes, shawms, flutes', moreLabel: 'More about Ariel' },
+    'Rafał': { instrument: 'Irish bouzouki, flutes', moreLabel: 'More about Rafał' },
+    Krzysztof: { instrument: 'Mandola', moreLabel: 'More about Krzysztof' },
+    'Jędrzej': { instrument: 'Davul', moreLabel: 'More about Jędrzej' },
+    Maciej: { instrument: 'Master of Ceremonies', moreLabel: 'More about Maciej' },
+    Jasio: { instrument: 'One-man band', moreLabel: 'More about Jasio' },
+  }
+} as const;
+
+const copy = {
+  pl: {
+    skipLink: 'Przejdź do treści głównej',
+    heroEyebrow: 'Historia i Muzyka',
+    heroTitle: 'O Nas',
+    historyLabel: 'Nasza Historia',
+    historyHeading: 'Jak Powstała Góra Trolla',
+    historyLead:
+      'Góra Trolla to zespół muzyki dawnej działający od 2008 roku. Publicznie dostępne źródła wiążą początki grupy z Rumią i szerzej z Trójmiastem, a od początku jej repertuar koncentrował się na pieśniach i tańcach średniowiecza oraz renesansu.',
+    historyBody1:
+      'W opisach zespołu powtarzają się utwory z kręgu Europy Zachodniej i Południowej, wykonywane zarówno po polsku, jak i w dawnych językach źródłowych. Ważną częścią brzmienia pozostają instrumenty kojarzone z muzyką dawną i tradycjami folkowymi: szałamaje, dudy, davul, mandola, buzuki i flety.',
+    quote:
+      'Nie interpretujemy muzyki dawnej. Próbujemy ją usłyszeć tak, jak słyszeli ją jej twórcy.',
+    historyBody2:
+      'W zewnętrznych źródłach można potwierdzić koncerty zespołu m.in. w Gdyni, Cieszynie, Wejherowie, Poznaniu, Kielcach i Bari. Skład zespołu zmieniał się w czasie, ale regularnie pojawiają się w nim nazwiska takie jak Maciej, Rafał, Ariel i Jędrzej.',
+    historyBody3:
+      'Na obecnym etapie strony publikujemy wyłącznie informacje, które udało się potwierdzić publicznie. Kolejne fakty, zdjęcia i biogramy będą uzupełniane stopniowo wraz z pozyskiwaniem materiałów bezpośrednio od zespołu.',
+    timelineLabel: 'Kamienie Milowe',
+    timeline: [
+      {
+        year: '2008',
+        title: 'Początki Zespołu',
+        body: 'Zewnętrzne źródła potwierdzają działalność Góry Trolla od 2008 roku; początki wiązane są z Rumią i Trójmiastem.'
+      },
+      {
+        year: '2014',
+        title: 'Potwierdzone Występy w Gdyni',
+        body: 'Publiczne zapowiedzi i relacje dokumentują występy m.in. w klubie Ucho podczas Folkowych Jarych Godów i Nocy Kupały.'
+      },
+      {
+        year: '2020',
+        title: 'Występ w Poznaniu',
+        body: 'Relacja z Jarmarku Świętojańskiego na Starym Rynku w Poznaniu stanowi jedno z najlepiej dostępnych publicznych źródeł zdjęciowych zespołu.'
+      },
+      {
+        year: '2025',
+        title: 'Bari i Scyzorykon',
+        body: 'Publicznie potwierdzone są m.in. koncert w Bari przy wydarzeniu o Bonie Sforzy oraz występ na festiwalu Scyzorykon w Kielcach.'
+      }
+    ],
+    philosophyLabel: 'Nasza Filozofia',
+    philosophyHeading: 'Jak Tworzymy Muzykę',
+    philosophy1Title: 'Autentyczne Instrumentarium',
+    philosophy1Body:
+      'Gramy na instrumentach zbudowanych według historycznych wzorców lub ich wiernych rekonstrukcjach. Dudy, flety, davul, mandola i buzuki nie są u nas rekwizytami - budują charakter całego brzmienia.',
+    philosophy2Title: 'Praca z Manuskryptami',
+    philosophy2Body:
+      'Nasz muzyczny świat zaczyna się od rękopisów. Sięgamy do oryginalnych źródeł - kodeksów, tabulatur i zapisów pieśni - żeby każda aranżacja była dialogiem z historią, a nie tylko stylizacją.',
+    meetLabel: 'Poznaj Nas',
+    meetHeading: 'Muzycy Góry Trolla',
+    galleryLabel: 'Galeria Zespołu',
+    galleryHeading: 'Góra Trolla na Scenie i Poza Nią',
+    gallery: [
+      { src: '/media/band_0.jpg', alt: 'Góra Trolla - zespół', caption: 'Góra Trolla - zespół' },
+      { src: '/media/band_6.jpg', alt: 'Muzycy podczas koncertu', caption: 'Muzycy podczas koncertu' },
+      { src: '/media/band_8.jpg', alt: 'Scena i instrumentarium', caption: 'Scena i instrumentarium' },
+      { src: '/media/maciek_1.jpg', alt: 'Maciej podczas prowadzenia koncertu', caption: 'Maciej podczas prowadzenia koncertu' },
+      { src: '/media/poznan_2.jpg', alt: 'Występ w Poznaniu', caption: 'Występ w Poznaniu' },
+      { src: '/media/gdansk_1.jpg', alt: 'Góra Trolla w Gdańsku', caption: 'Góra Trolla w Gdańsku' }
+    ]
+  },
+  en: {
+    skipLink: 'Skip to main content',
+    heroEyebrow: 'History & Music',
+    heroTitle: 'About Us',
+    historyLabel: 'Our History',
+    historyHeading: 'How Góra Trolla Came to Be',
+    historyLead:
+      'Góra Trolla has been active since 2008. Publicly available sources tie the ensemble to Rumia and the wider Tri-City region, and from the start its repertoire revolved around medieval and Renaissance songs, dances, and ceremonial music.',
+    historyBody1:
+      'Descriptions of the group regularly mention repertoire from Western and Southern Europe, performed both in Polish and in historical source languages. The ensemble’s sound is rooted in instruments associated with early music and folk traditions: shawms, bagpipes, davul, mandola, bouzouki, and flutes.',
+    quote:
+      'We do not merely interpret early music. We try to hear it as its creators might have heard it.',
+    historyBody2:
+      'External sources confirm performances in places such as Gdynia, Cieszyn, Wejherowo, Poznan, Kielce, and Bari. The lineup evolved over time, but names such as Maciej, Rafal, Ariel, and Jedrzej appear again and again in the documented history of the ensemble.',
+    historyBody3:
+      'At this stage of the site we only publish information that can be publicly verified. Additional facts, photographs, and biographies will be expanded gradually as more materials arrive directly from the band.',
+    timelineLabel: 'Milestones',
+    timeline: [
+      {
+        year: '2008',
+        title: 'Origins in the Tri-City Region',
+        body: 'Public sources place the beginnings of Góra Trolla in Rumia and the wider Tri-City area.'
+      },
+      {
+        year: '2014',
+        title: 'Documented Gdynia Performances',
+        body: 'Announcements and event listings document appearances in Gdynia, including Folkowe Jare Gody and Folkowa Noc Kupały.'
+      },
+      {
+        year: '2020',
+        title: 'Poznan Appearance',
+        body: 'Coverage of the St. John’s Fair in Poznan provides one of the best public photographic records of the ensemble.'
+      },
+      {
+        year: '2025',
+        title: 'Bari and Scyzorykon',
+        body: 'Recent public sources confirm both the Bari event dedicated to Bona Sforza and the ensemble’s appearance at the Scyzorykon festival.'
+      }
+    ],
+    philosophyLabel: 'Our Approach',
+    philosophyHeading: 'How We Shape the Music',
+    philosophy1Title: 'Historical Instrumentarium',
+    philosophy1Body:
+      'We perform on instruments built from historical models or close reconstructions. Bagpipes, flutes, davul, mandola and bouzouki are not decorative props here - they define the identity of the ensemble’s sound.',
+    philosophy2Title: 'Working from Manuscripts',
+    philosophy2Body:
+      'Our musical world begins with manuscripts. We return to original sources - codices, tablatures and song collections - so that every arrangement feels like a conversation with history rather than a costume exercise.',
+    meetLabel: 'Meet Us',
+    meetHeading: 'Musicians of Góra Trolla',
+    galleryLabel: 'Band Gallery',
+    galleryHeading: 'Góra Trolla On Stage and Beyond',
+    gallery: [
+      { src: '/media/band_0.jpg', alt: 'Góra Trolla ensemble', caption: 'Góra Trolla ensemble' },
+      { src: '/media/band_6.jpg', alt: 'Musicians during a concert', caption: 'Musicians during a concert' },
+      { src: '/media/band_8.jpg', alt: 'Stage and instrumentarium', caption: 'Stage and instrumentarium' },
+      { src: '/media/maciek_1.jpg', alt: 'Maciej leading the audience', caption: 'Maciej leading the audience' },
+      { src: '/media/poznan_2.jpg', alt: 'Performance in Poznan', caption: 'Performance in Poznan' },
+      { src: '/media/gdansk_1.jpg', alt: 'Góra Trolla in Gdansk', caption: 'Góra Trolla in Gdansk' }
+    ]
+  }
+} as const;
+
+const t = copy[lang];
+---
+
+<a class="skip-link" href="#main-content">{t.skipLink}</a>
+
+<Nav lang={lang} currentPage="about" />
+
+<main id="main-content">
+  <div
+    class="page-hero"
+    style="background:linear-gradient(to bottom,rgba(10,8,6,0.3) 0%,rgba(10,8,6,0.75) 60%,rgba(10,8,6,0.97) 100%),linear-gradient(135deg,#2a1a08 0%,#1a1208 50%,#0d0a06 100%);padding-top:var(--nav-height)"
+  >
+    <div class="page-hero__content container">
+      <p class="t-eyebrow" style="margin-bottom:var(--space-3)">{t.heroEyebrow}</p>
+      <h1 class="page-hero__title">{t.heroTitle}</h1>
+      <span class="page-hero__title-underline"></span>
+    </div>
+  </div>
+
+  <section class="section" aria-labelledby="history-heading">
+    <div class="container container--narrow">
+      <div data-animate="fade-up">
+        <p class="section-label">{t.historyLabel}</p>
+        <h2 id="history-heading" style="margin-bottom:var(--space-8)">{t.historyHeading}</h2>
+
+        <article>
+          <p class="drop-cap" style="font-size:var(--text-lg);line-height:var(--leading-loose)">
+            {t.historyLead}
+          </p>
+
+          <p>{t.historyBody1}</p>
+
+          <blockquote
+            style="margin:var(--space-12) 0;padding:var(--space-6) var(--space-8);border-left:3px solid var(--color-gold-bright);background:var(--color-glass);backdrop-filter:var(--glass-blur);border-radius:0 var(--radius-md) var(--radius-md) 0"
+          >
+            <p class="t-quote" style="font-size:clamp(1.1rem,2.5vw,1.5rem);margin:0">
+              "{t.quote}"
+            </p>
+          </blockquote>
+
+          <p>{t.historyBody2}</p>
+          <p>{t.historyBody3}</p>
+        </article>
+      </div>
+
+      <div style="margin-top:var(--space-16)" data-animate="fade-up">
+        <p class="section-label">{t.timelineLabel}</p>
+        <div style="position:relative;padding-left:var(--space-8)">
+          <div aria-hidden="true" style="position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--color-gold-bright),transparent)"></div>
+
+          {t.timeline.map((item) => (
+            <div style="margin-bottom:var(--space-10);position:relative">
+              <div style="position:absolute;left:calc(-1 * var(--space-8) - 5px);top:4px;width:10px;height:10px;border-radius:50%;background:var(--color-gold-bright);box-shadow:var(--shadow-gold-xs)"></div>
+              <p style="font-family:var(--font-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;color:var(--color-gold-bright);margin-bottom:var(--space-2)">{item.year}</p>
+              <h4 style="font-size:var(--text-lg);color:var(--color-parchment);margin-bottom:var(--space-2)">{item.title}</h4>
+              <p style="font-size:var(--text-sm);color:var(--color-vellum)">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark" aria-labelledby="philosophy-heading">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:var(--space-12)" data-animate="fade-up">
+        <p class="section-label" style="justify-content:center">{t.philosophyLabel}</p>
+        <h2 id="philosophy-heading">{t.philosophyHeading}</h2>
+      </div>
+
+      <div class="alternating-block" data-animate="fade-up">
+        <div class="alternating-block__content">
+          <h3 style="color:var(--color-gold-pale);margin-bottom:var(--space-4)">{t.philosophy1Title}</h3>
+          <p>{t.philosophy1Body}</p>
+        </div>
+        <div class="alternating-block__image">
+          <div style="aspect-ratio:3/2;border:var(--border-gold);border-radius:var(--radius-md);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;background:var(--color-stone)">
+            <img src="/media/dudy1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" />
+            <img src="/media/dudy2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
+        </div>
+      </div>
+
+      <div class="alternating-block" data-animate="fade-up">
+        <div class="alternating-block__image">
+          <div style="aspect-ratio:3/2;border:var(--border-gold);border-radius:var(--radius-md);overflow:hidden;background:var(--color-stone)">
+            <img src="/media/rauschpfeife.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
+        </div>
+        <div class="alternating-block__content">
+          <h3 style="color:var(--color-gold-pale);margin-bottom:var(--space-4)">{t.philosophy2Title}</h3>
+          <p>{t.philosophy2Body}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="musicians-heading">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:var(--space-12)" data-animate="fade-up">
+        <p class="section-label" style="justify-content:center">{t.meetLabel}</p>
+        <h2 id="musicians-heading">{t.meetHeading}</h2>
+      </div>
+
+      <div class="grid-3" role="list">
+        {musicians.map((musician, index) => {
+          const meta = musicianMeta[lang][musician.name as keyof typeof musicianMeta[typeof lang]];
+          return (
+          <MusicianCard
+            name={musician.name}
+            instrument={meta.instrument}
+            bio={musician.bio[lang]}
+            image={musician.image}
+            lang={lang}
+            animateDelay={index + 1}
+            sameAs={musician.sameAs}
+            moreLabel={meta.moreLabel}
+          />
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--stone" aria-labelledby="gallery-heading">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:var(--space-12)" data-animate="fade-up">
+        <p class="section-label" style="justify-content:center">{t.galleryLabel}</p>
+        <h2 id="gallery-heading">{t.galleryHeading}</h2>
+      </div>
+
+      <div class="gallery-grid" data-gallery="about">
+        {t.gallery.map((item, index) => (
+          <GalleryItem
+            src={item.src}
+            alt={item.alt}
+            fullSrc={item.src}
+            caption={item.caption}
+            animateDelay={(index % 6) + 1}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</main>
+
+<Footer lang={lang} />
+
+<script define:vars={{ lang }}>
+  localStorage.setItem('gt-lang', lang);
+</script>

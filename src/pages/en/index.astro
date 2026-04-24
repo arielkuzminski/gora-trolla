@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import HomePageContent from '../../components/HomePageContent.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const concertEntries = await getCollection('concerts');
+const allConcerts = concertEntries
+  .map((entry) => entry.data)
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+const now = new Date();
+now.setHours(0, 0, 0, 0);
+
+const teaserConcerts = allConcerts
+  .filter((concert) => new Date(concert.date).getTime() >= now.getTime())
+  .slice(0, 3);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicGroup',
+  name: 'Góra Trolla',
+  alternateName: 'Góra Trolla Early Music Ensemble',
+  description: 'Polish early music ensemble specializing in medieval, Renaissance and Baroque repertoire.',
+  url: 'https://goratrolla.pl',
+  logo: 'https://goratrolla.pl/assets/images/icons/logo.svg',
+  genre: ['Early Music', 'Medieval Music', 'Renaissance Music', 'Baroque Music'],
+  foundingDate: '2008',
+  foundingLocation: {
+    '@type': 'Place',
+    addressCountry: 'PL',
+    addressLocality: 'Rumia',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Gdansk' },
+    { '@type': 'City', name: 'Gdynia' },
+    { '@type': 'City', name: 'Rumia' },
+    { '@type': 'AdministrativeArea', name: 'Tri-City' },
+    { '@type': 'Country', name: 'Poland' },
+  ],
+  sameAs: [
+    'https://www.facebook.com/goratrolla',
+    'https://www.instagram.com/goratrolla',
+    'https://www.youtube.com/@goratrolla',
+  ],
+};
+---
+
+<BaseLayout
+  title="Góra Trolla - Early Music Ensemble | Home"
+  description="Góra Trolla is a Polish early music ensemble specializing in medieval, Renaissance and Baroque repertoire. Concerts, history and live performance."
+  lang="en"
+  currentPage="home"
+  canonicalUrl="https://goratrolla.pl/en/"
+  ogLocale="en_US"
+  alternates={{
+    pl: 'https://goratrolla.pl/',
+    en: 'https://goratrolla.pl/en/',
+  }}
+  ogTitle="Góra Trolla - Early Music Ensemble"
+  ogDescription="Polish early music ensemble - medieval, Renaissance and Baroque repertoire."
+  jsonLd={jsonLd}
+>
+  <HomePageContent lang="en" teaserConcerts={teaserConcerts} allConcerts={allConcerts} />
+</BaseLayout>

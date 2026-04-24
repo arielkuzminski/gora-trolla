@@ -1,0 +1,68 @@
+---
+import ContactPageContent from '../components/ContactPageContent.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Kontakt - Góra Trolla',
+    url: 'https://goratrolla.pl/kontakt/',
+    mainEntity: {
+      '@type': 'MusicGroup',
+      name: 'Góra Trolla',
+      url: 'https://goratrolla.pl',
+      foundingDate: '2008',
+      email: 'kontakt@goratrolla.pl',
+      areaServed: [
+        { '@type': 'City', name: 'Gdańsk' },
+        { '@type': 'City', name: 'Gdynia' },
+        { '@type': 'City', name: 'Rumia' },
+        { '@type': 'AdministrativeArea', name: 'Trójmiasto' },
+      ],
+      sameAs: [
+        'https://www.facebook.com/goratrolla',
+        'https://www.instagram.com/goratrolla',
+        'https://www.youtube.com/@goratrolla',
+      ],
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MusicGroup',
+    name: 'Góra Trolla',
+    url: 'https://goratrolla.pl',
+    email: 'kontakt@goratrolla.pl',
+    foundingDate: '2008',
+    areaServed: [
+      { '@type': 'City', name: 'Gdańsk' },
+      { '@type': 'City', name: 'Gdynia' },
+      { '@type': 'City', name: 'Rumia' },
+      { '@type': 'AdministrativeArea', name: 'Trójmiasto' },
+    ],
+    sameAs: [
+      'https://www.facebook.com/goratrolla',
+      'https://www.instagram.com/goratrolla',
+      'https://www.youtube.com/@goratrolla',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Kontakt - Góra Trolla | Zespół Muzyki Dawnej"
+  description="Skontaktuj się z Górą Trolla - zapytania o koncerty, współpracę, prasę i media."
+  lang="pl"
+  currentPage="contact"
+  canonicalUrl="https://goratrolla.pl/kontakt/"
+  ogLocale="pl_PL"
+  alternates={{
+    pl: 'https://goratrolla.pl/kontakt/',
+    en: 'https://goratrolla.pl/en/contact/',
+  }}
+  ogTitle="Kontakt - Góra Trolla"
+  ogDescription="Skontaktuj się z zespołem Góra Trolla."
+  jsonLd={jsonLd}
+>
+  <ContactPageContent lang="pl" />
+</BaseLayout>

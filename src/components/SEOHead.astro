@@ -1,0 +1,78 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl: string;
+  ogLocale: 'pl_PL' | 'en_US';
+  alternates: {
+    pl: string;
+    en: string;
+    xDefault?: string;
+  };
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  jsonLd?: object | object[];
+}
+
+const {
+  title,
+  description,
+  canonicalUrl,
+  ogLocale,
+  alternates,
+  ogTitle,
+  ogDescription,
+  ogImage = 'https://goratrolla.pl/assets/images/icons/og-image.jpg',
+  jsonLd,
+} = Astro.props;
+
+const effectiveOgTitle = ogTitle ?? title;
+const effectiveOgDescription = ogDescription ?? description;
+const xDefaultUrl = alternates.xDefault ?? alternates.pl;
+
+const jsonLdItems = jsonLd
+  ? Array.isArray(jsonLd)
+    ? jsonLd
+    : [jsonLd]
+  : [];
+---
+
+<!-- Primary meta -->
+<meta name="description" content={description} />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- hreflang -->
+<link rel="alternate" hreflang="pl" href={alternates.pl} />
+<link rel="alternate" hreflang="en" href={alternates.en} />
+<link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={effectiveOgTitle} />
+<meta property="og:description" content={effectiveOgDescription} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:locale" content={ogLocale} />
+<meta property="og:site_name" content="Góra Trolla" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={effectiveOgTitle} />
+<meta name="twitter:description" content={effectiveOgDescription} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Favicon + manifest -->
+<link rel="icon" href="/assets/images/icons/logo.svg" type="image/svg+xml" />
+<link rel="manifest" href="/manifest.webmanifest" />
+
+<!-- JSON-LD -->
+{jsonLdItems.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}
+
+<!-- Extra head content (e.g. page-specific JSON-LD) -->
+<slot />

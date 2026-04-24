@@ -1,0 +1,238 @@
+---
+import ConcertCard from './ConcertCard.astro';
+import GalleryItem from './GalleryItem.astro';
+import HeroSection from './HeroSection.astro';
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+
+interface ConcertData {
+  id: string;
+  title: { pl: string; en: string };
+  date: string;
+  venue: { pl: string; en: string };
+  city: string;
+  type: 'sacred' | 'secular' | 'chamber';
+  period: 'medieval' | 'renaissance' | 'baroque';
+  free: boolean;
+  ticketUrl: string | null;
+  poster?: string;
+  description: { pl: string; en: string };
+}
+
+interface Props {
+  lang: 'pl' | 'en';
+  teaserConcerts: ConcertData[];
+  allConcerts: ConcertData[];
+}
+
+const { lang, teaserConcerts, allConcerts } = Astro.props;
+
+const copy = {
+  pl: {
+    skipLink: 'Przejdź do treści głównej',
+    heroTagline: 'Zespół Muzyki Dawnej',
+    heroHeading: 'Góra Trolla',
+    heroSubheading: 'Zespół Muzyki Dawnej',
+    heroCta1: 'Nasze Koncerty',
+    heroCta1Href: '/koncerty/',
+    heroCta2: 'O Zespole',
+    heroCta2Href: '/o-nas/',
+    heroAria: 'Baner główny',
+    introLabel: 'O Zespole',
+    introHeading: 'Dźwięki Minionych Epok',
+    introLead:
+      'Góra Trolla to zespół muzyki dawnej z Trójmiasta. Łączymy historyczne instrumentarium i praktykę wykonawczą z energią grania dla współczesnej publiczności.',
+    introBody:
+      'Gramy repertuar średniowieczny, renesansowy i barokowy: pieśni trubadurów, muzykę dworską, motety, tańce i programy inspirowane kulturą dawnych wieków. Koncertujemy na festiwalach, wydarzeniach historycznych, scenach fantasy i w przestrzeniach sakralnych.',
+    introCta: 'Poznaj nas bliżej',
+    introCtaHref: '/o-nas/',
+    introImageAlt: 'Góra Trolla podczas wspólnego występu',
+    concertsLabel: 'Koncerty',
+    concertsHeading: 'Nadchodzące Koncerty',
+    concertsCta: 'Wszystkie Koncerty',
+    concertsCtaHref: '/koncerty/',
+    quoteAria: 'Cytat',
+    quoteText:
+      'Muzyka dawna nie jest reliktem. To żywa opowieść, która wciąż potrafi poruszać, tańczyć i zapalać wyobraźnię.',
+    quoteAuthor: 'Góra Trolla',
+    galleryLabel: 'Galeria',
+    galleryHeading: 'Nasze Koncerty w Obrazach',
+    galleryItems: [
+      { src: '/media/band_1.jpg', alt: 'Góra Trolla - wspólne zdjęcie', caption: 'Góra Trolla - wspólne zdjęcie' },
+      { src: '/media/band_2.jpg', alt: 'Zespół podczas występu', caption: 'Zespół podczas występu' },
+      { src: '/media/band_3.jpg', alt: 'Góra Trolla na żywo', caption: 'Góra Trolla na żywo' },
+      { src: '/media/band_4.jpg', alt: 'Muzyka kameralna', caption: 'Muzyka kameralna' },
+      { src: '/media/band_5.jpg', alt: 'Góra Trolla - zdjęcie zespołowe', caption: 'Góra Trolla - zdjęcie zespołowe' },
+      { src: '/media/band_7.jpg', alt: 'Zespół na scenie', caption: 'Zespół na scenie' },
+    ],
+  },
+  en: {
+    skipLink: 'Skip to main content',
+    heroTagline: 'Early Music Ensemble',
+    heroHeading: 'Góra Trolla',
+    heroSubheading: 'Early Music Ensemble',
+    heroCta1: 'Our Concerts',
+    heroCta1Href: '/en/concerts/',
+    heroCta2: 'About Us',
+    heroCta2Href: '/en/about/',
+    heroAria: 'Main banner',
+    introLabel: 'About the Ensemble',
+    introHeading: 'Sounds of Bygone Ages',
+    introLead:
+      'Góra Trolla is a Polish early music ensemble from the Tri-City region. We combine historical instruments and performance practice with the immediacy of live performance.',
+    introBody:
+      'Our repertoire spans medieval, Renaissance and Baroque music: troubadour songs, courtly dances, sacred programmes and vivid concert sets shaped for contemporary audiences. We perform at festivals, historical events, fantasy gatherings and sacred venues.',
+    introCta: 'Learn more about us',
+    introCtaHref: '/en/about/',
+    introImageAlt: 'Góra Trolla performing together on stage',
+    concertsLabel: 'Concerts',
+    concertsHeading: 'Upcoming Concerts',
+    concertsCta: 'All Concerts',
+    concertsCtaHref: '/en/concerts/',
+    quoteAria: 'Quote',
+    quoteText:
+      'Early music is not a relic. It is a living story that can still move people, set bodies in motion, and ignite the imagination.',
+    quoteAuthor: 'Góra Trolla',
+    galleryLabel: 'Gallery',
+    galleryHeading: 'Our Concerts in Images',
+    galleryItems: [
+      { src: '/media/band_1.jpg', alt: 'Góra Trolla group portrait', caption: 'Góra Trolla group portrait' },
+      { src: '/media/band_2.jpg', alt: 'The ensemble during a performance', caption: 'The ensemble during a performance' },
+      { src: '/media/band_3.jpg', alt: 'Góra Trolla live', caption: 'Góra Trolla live' },
+      { src: '/media/band_4.jpg', alt: 'Chamber music setting', caption: 'Chamber music setting' },
+      { src: '/media/band_5.jpg', alt: 'Ensemble portrait', caption: 'Ensemble portrait' },
+      { src: '/media/band_7.jpg', alt: 'On stage performance', caption: 'On stage performance' },
+    ],
+  },
+} as const;
+
+const t = copy[lang];
+---
+
+<a class="skip-link" href="#main-content">{t.skipLink}</a>
+
+<Nav lang={lang} currentPage="home" />
+
+<main id="main-content">
+  <HeroSection
+    tagline={t.heroTagline}
+    heading={t.heroHeading}
+    subheading={t.heroSubheading}
+    cta1Label={t.heroCta1}
+    cta1Href={t.heroCta1Href}
+    cta2Label={t.heroCta2}
+    cta2Href={t.heroCta2Href}
+    ariaLabel={t.heroAria}
+  />
+
+  <section class="section" aria-labelledby="intro-heading">
+    <div class="container">
+      <div class="grid-2" style="align-items:center;gap:clamp(var(--space-12),6vw,var(--space-24))">
+        <div data-animate="fade-up">
+          <p class="section-label">{t.introLabel}</p>
+          <h2 id="intro-heading" style="margin-bottom:var(--space-6)">{t.introHeading}</h2>
+          <p class="drop-cap" style="font-size:var(--text-lg);line-height:var(--leading-loose)">
+            {t.introLead}
+          </p>
+          <p style="margin-top:var(--space-4)">
+            {t.introBody}
+          </p>
+          <a href={t.introCtaHref} class="btn btn--ghost" style="margin-top:var(--space-8)">
+            {t.introCta}
+          </a>
+        </div>
+
+        <div data-animate="slide-right" style="position:relative">
+          <div
+            style="aspect-ratio:4/5;background:linear-gradient(135deg,var(--color-obsidian),var(--color-stone));border:var(--border-gold);border-radius:var(--radius-md);position:relative;overflow:hidden"
+          >
+            <img
+              src="/media/band_5.jpg"
+              alt={t.introImageAlt}
+              style="width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.02) brightness(0.92)"
+            />
+            <div
+              aria-hidden="true"
+              style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,0.5) 0%,transparent 55%)"
+            ></div>
+            <div aria-hidden="true" style="position:absolute;inset:12px;border:1px solid rgba(212,168,67,0.15);border-radius:4px;pointer-events:none"></div>
+            <div aria-hidden="true" style="position:absolute;top:6px;left:6px;width:24px;height:24px;border-top:2px solid var(--color-gold-bright);border-left:2px solid var(--color-gold-bright);border-radius:2px 0 0 0"></div>
+            <div aria-hidden="true" style="position:absolute;top:6px;right:6px;width:24px;height:24px;border-top:2px solid var(--color-gold-bright);border-right:2px solid var(--color-gold-bright);border-radius:0 2px 0 0"></div>
+            <div aria-hidden="true" style="position:absolute;bottom:6px;left:6px;width:24px;height:24px;border-bottom:2px solid var(--color-gold-bright);border-left:2px solid var(--color-gold-bright);border-radius:0 0 0 2px"></div>
+            <div aria-hidden="true" style="position:absolute;bottom:6px;right:6px;width:24px;height:24px;border-bottom:2px solid var(--color-gold-bright);border-right:2px solid var(--color-gold-bright);border-radius:0 0 2px 0"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark" aria-labelledby="concerts-teaser-heading">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:var(--space-12)" data-animate="fade-up">
+        <p class="section-label" style="justify-content:center">{t.concertsLabel}</p>
+        <h2 id="concerts-teaser-heading">{t.concertsHeading}</h2>
+      </div>
+
+      <div class="grid-3" id="teaser-concerts">
+        {teaserConcerts.map((concert, index) => (
+          <ConcertCard concert={concert} lang={lang} animateDelay={index + 1} />
+        ))}
+      </div>
+
+      <div style="display:flex;justify-content:center;margin-top:var(--space-10)" data-animate="fade-up">
+        <a href={t.concertsCtaHref} class="btn btn--primary">{t.concertsCta}</a>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="section"
+    style="background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(90,60,10,0.15) 0%,transparent 70%),var(--color-void);text-align:center"
+    aria-label={t.quoteAria}
+  >
+    <div class="container container--narrow">
+      <div data-animate="fade-in">
+        <div aria-hidden="true" style="margin-bottom:var(--space-6);color:var(--color-gold-bright);opacity:0.5;font-size:2.5rem">❦</div>
+        <blockquote>
+          <p class="t-quote" style="margin-inline:auto;max-width:680px">
+            "{t.quoteText}"
+          </p>
+          <footer style="margin-top:var(--space-6)">
+            <cite style="font-family:var(--font-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--color-faded);font-style:normal">
+              {t.quoteAuthor}
+            </cite>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--stone" aria-labelledby="gallery-heading">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:var(--space-12)" data-animate="fade-up">
+        <p class="section-label" style="justify-content:center">{t.galleryLabel}</p>
+        <h2 id="gallery-heading">{t.galleryHeading}</h2>
+      </div>
+
+      <div class="gallery-grid" data-gallery="main">
+        {t.galleryItems.map((item, index) => (
+          <GalleryItem
+            src={item.src}
+            alt={item.alt}
+            fullSrc={item.src}
+            caption={item.caption}
+            animateDelay={(index % 6) + 1}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</main>
+
+<Footer lang={lang} />
+
+<script type="application/json" id="concert-data" set:html={JSON.stringify(allConcerts)} />
+
+<script define:vars={{ lang }}>
+  localStorage.setItem('gt-lang', lang);
+</script>

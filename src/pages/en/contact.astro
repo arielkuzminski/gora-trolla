@@ -1,0 +1,68 @@
+---
+import ContactPageContent from '../../components/ContactPageContent.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact - Góra Trolla',
+    url: 'https://goratrolla.pl/en/contact/',
+    mainEntity: {
+      '@type': 'MusicGroup',
+      name: 'Góra Trolla',
+      url: 'https://goratrolla.pl',
+      foundingDate: '2008',
+      email: 'kontakt@goratrolla.pl',
+      areaServed: [
+        { '@type': 'City', name: 'Gdansk' },
+        { '@type': 'City', name: 'Gdynia' },
+        { '@type': 'City', name: 'Rumia' },
+        { '@type': 'AdministrativeArea', name: 'Tri-City' },
+      ],
+      sameAs: [
+        'https://www.facebook.com/goratrolla',
+        'https://www.instagram.com/goratrolla',
+        'https://www.youtube.com/@goratrolla',
+      ],
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MusicGroup',
+    name: 'Góra Trolla',
+    url: 'https://goratrolla.pl',
+    email: 'kontakt@goratrolla.pl',
+    foundingDate: '2008',
+    areaServed: [
+      { '@type': 'City', name: 'Gdansk' },
+      { '@type': 'City', name: 'Gdynia' },
+      { '@type': 'City', name: 'Rumia' },
+      { '@type': 'AdministrativeArea', name: 'Tri-City' },
+    ],
+    sameAs: [
+      'https://www.facebook.com/goratrolla',
+      'https://www.instagram.com/goratrolla',
+      'https://www.youtube.com/@goratrolla',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Contact - Góra Trolla | Early Music Ensemble"
+  description="Contact Góra Trolla about concerts, collaboration, press and media."
+  lang="en"
+  currentPage="contact"
+  canonicalUrl="https://goratrolla.pl/en/contact/"
+  ogLocale="en_US"
+  alternates={{
+    pl: 'https://goratrolla.pl/kontakt/',
+    en: 'https://goratrolla.pl/en/contact/',
+  }}
+  ogTitle="Contact - Góra Trolla"
+  ogDescription="Contact the Góra Trolla ensemble."
+  jsonLd={jsonLd}
+>
+  <ContactPageContent lang="en" />
+</BaseLayout>

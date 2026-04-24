@@ -1,0 +1,136 @@
+---
+interface Props {
+  lang: 'pl' | 'en';
+  currentPage: 'home' | 'about' | 'concerts' | 'contact';
+}
+
+const { lang, currentPage } = Astro.props;
+
+// Build-time labels
+const labels = {
+  pl: {
+    logoAriaLabel: 'Góra Trolla — Strona główna',
+    logoSubtitle:  'Muzyka Dawna',
+    hamburger:     'Otwórz menu',
+    navAriaLabel:  'Nawigacja główna',
+    langGroup:     'Wybór języka',
+    home:          'Strona Główna',
+    about:         'O Nas',
+    concerts:      'Koncerty',
+    contact:       'Kontakt',
+  },
+  en: {
+    logoAriaLabel: 'Góra Trolla — Home',
+    logoSubtitle:  'Early Music',
+    hamburger:     'Open menu',
+    navAriaLabel:  'Main navigation',
+    langGroup:     'Language selection',
+    home:          'Home',
+    about:         'About',
+    concerts:      'Concerts',
+    contact:       'Contact',
+  },
+} as const;
+
+const t = labels[lang];
+
+// Per-language nav links
+const links = {
+  pl: {
+    home:     '/',
+    about:    '/o-nas/',
+    concerts: '/koncerty/',
+    contact:  '/kontakt/',
+    plHref:   '/',
+    enHref:   '/en/',
+  },
+  en: {
+    home:     '/en/',
+    about:    '/en/about/',
+    concerts: '/en/concerts/',
+    contact:  '/en/contact/',
+    plHref:   '/',
+    enHref:   '/en/',
+  },
+} as const;
+
+const l = links[lang];
+---
+
+<header class="nav" role="banner">
+  <div class="nav__inner">
+
+    <!-- Logo -->
+    <a href={l.home} class="nav__logo" aria-label={t.logoAriaLabel}>
+      <img
+        src="/assets/images/icons/logo-troll.jpg"
+        alt=""
+        class="nav__logo-mark"
+        width="36"
+        height="36"
+        aria-hidden="true"
+        style="border-radius:50%;object-fit:cover;filter:brightness(0.9) contrast(1.1);"
+      />
+      <div class="nav__logo-text">
+        Góra Trolla
+        <span>{t.logoSubtitle}</span>
+      </div>
+    </a>
+
+    <!-- Hamburger (mobile) -->
+    <button
+      class="nav__hamburger"
+      aria-label={t.hamburger}
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Nav links -->
+    <nav id="nav-links" class="nav__links" role="navigation" aria-label={t.navAriaLabel}>
+
+      <a
+        href={l.home}
+        class="nav__link"
+        aria-current={currentPage === 'home' ? 'page' : undefined}
+      >{t.home}</a>
+
+      <a
+        href={l.about}
+        class="nav__link"
+        aria-current={currentPage === 'about' ? 'page' : undefined}
+      >{t.about}</a>
+
+      <a
+        href={l.concerts}
+        class="nav__link"
+        aria-current={currentPage === 'concerts' ? 'page' : undefined}
+      >{t.concerts}</a>
+
+      <a
+        href={l.contact}
+        class="nav__link"
+        aria-current={currentPage === 'contact' ? 'page' : undefined}
+      >{t.contact}</a>
+
+      <!-- Language switcher -->
+      <div class="lang-switcher" role="group" aria-label={t.langGroup}>
+        <a
+          href={l.plHref}
+          hreflang="pl"
+          class={`lang-btn${lang === 'pl' ? ' lang-btn--active' : ''}`}
+          aria-current={lang === 'pl' ? 'true' : undefined}
+        >PL</a>
+        <span aria-hidden="true">|</span>
+        <a
+          href={l.enHref}
+          hreflang="en"
+          class={`lang-btn${lang === 'en' ? ' lang-btn--active' : ''}`}
+          aria-current={lang === 'en' ? 'true' : undefined}
+        >EN</a>
+      </div>
+
+    </nav>
+  </div>
+</header>

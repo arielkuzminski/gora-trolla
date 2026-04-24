@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content';
+import ConcertsPageContent from '../../components/ConcertsPageContent.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const concertEntries = await getCollection('concerts');
+const allConcerts = concertEntries
+  .map((entry) => entry.data)
+  .sort((a, b) => {
+    const aDate = new Date(a.date).getTime();
+    const bDate = new Date(b.date).getTime();
+    const now = new Date();
+    now.setHours(0, 0, 0, 0);
+    const aUpcoming = aDate >= now.getTime();
+    const bUpcoming = bDate >= now.getTime();
+    if (aUpcoming !== bUpcoming) return aUpcoming ? -1 : 1;
+    return aUpcoming ? aDate - bDate : bDate - aDate;
+  });
+
+const now = new Date();
+now.setHours(0, 0, 0, 0);
+
+const jsonLd = allConcerts
+  .filter((concert) => new Date(concert.date).getTime() >= now.getTime())
+  .map((concert) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: concert.title.en,
+    startDate: concert.date,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: concert.venue.en,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: concert.city,
+        addressCountry: 'PL',
+      },
+    },
+    performer: {
+      '@type': 'MusicGroup',
+      name: 'Góra Trolla',
+      url: 'https://goratrolla.pl',
+    },
+    organizer: {
+      '@type': 'MusicGroup',
+      name: 'Góra Trolla',
+      url: 'https://goratrolla.pl',
+    },
+    isAccessibleForFree: concert.free,
+    offers: concert.ticketUrl ? {
+      '@type': 'Offer',
+      url: concert.ticketUrl,
+      availability: 'https://schema.org/InStock',
+    } : undefined,
+  }));
+---
+
+<BaseLayout
+  title="Concerts - Góra Trolla | Early Music Ensemble"
+  description="Upcoming and past concerts by Góra Trolla - a Polish early music ensemble performing medieval, Renaissance and Baroque repertoire live."
+  lang="en"
+  currentPage="concerts"
+  canonicalUrl="https://goratrolla.pl/en/concerts/"
+  ogLocale="en_US"
+  alternates={{
+    pl: 'https://goratrolla.pl/koncerty/',
+    en: 'https://goratrolla.pl/en/concerts/',
+  }}
+  ogTitle="Concerts - Góra Trolla"
+  ogDescription="Upcoming and past concerts by Góra Trolla."
+  jsonLd={jsonLd}
+>
+  <ConcertsPageContent lang="en" allConcerts={allConcerts} />
+</BaseLayout>

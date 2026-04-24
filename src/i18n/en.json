@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home":    "Home",
+    "about":   "About",
+    "concerts":"Concerts",
+    "contact": "Contact",
+    "lang":    "PL"
+  },
+  "hero": {
+    "tagline":      "Early Music Ensemble",
+    "cta_concerts": "Our Concerts",
+    "cta_about":    "About Us",
+    "scroll":       "Scroll"
+  },
+  "concerts": {
+    "filter": {
+      "time":        "Time",
+      "type":        "Type",
+      "period":      "Period",
+      "all":         "All",
+      "upcoming":    "Upcoming",
+      "past":        "Past",
+      "sacred":      "Sacred",
+      "secular":     "Secular",
+      "chamber":     "Chamber",
+      "medieval":    "Medieval",
+      "renaissance": "Renaissance",
+      "baroque":     "Baroque"
+    },
+    "type_label": {
+      "sacred":  "Sacred",
+      "secular": "Secular",
+      "chamber": "Chamber"
+    },
+    "period_label": {
+      "medieval":    "Medieval",
+      "renaissance": "Renaissance",
+      "baroque":     "Baroque"
+    },
+    "free_entry":   "Free entry",
+    "show_past":    "Show past concerts",
+    "hide_past":    "Hide past concerts",
+    "no_results":   "No concerts match your filters."
+  },
+  "musicians": {
+    "more": "More about {name}",
+    "placeholder_alt": "{name} portrait placeholder"
+  },
+  "contact": {
+    "form_name":       "Full name",
+    "form_email":      "Email address",
+    "form_subject":    "Subject",
+    "form_message":    "Message",
+    "form_submit":     "Send message",
+    "form_loading":    "Sending…",
+    "form_success":    "Thank you! We will reply shortly.",
+    "subject_concerts":    "Concerts",
+    "subject_collab":      "Collaboration",
+    "subject_press":       "Press / Media",
+    "subject_other":       "Other"
+  },
+  "footer": {
+    "tagline":   "Early Music",
+    "copyright": "All rights reserved"
+  },
+  "lightbox": {
+    "close": "Close",
+    "prev":  "Previous",
+    "next":  "Next"
+  }
+}

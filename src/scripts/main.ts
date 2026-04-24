@@ -95,26 +95,11 @@ function initHeroFade() {
   }, { passive: true });
 }
 
-function initPastConcertsToggle() {
-  const btn = document.getElementById('toggle-past');
-  const section = document.getElementById('past-concerts');
-  if (!btn || !section) return;
-
-  btn.addEventListener('click', () => {
-    const isOpen = section.classList.contains('is-open');
-    section.classList.toggle('is-open', !isOpen);
-    btn.textContent = isOpen
-      ? (btn.getAttribute('data-show') || 'Pokaż minione koncerty')
-      : (btn.getAttribute('data-hide') || 'Ukryj minione koncerty');
-  });
-}
-
 function initMain() {
   initEntranceAnimations();
   initContactForm();
   initEmailObfuscation();
   initHeroFade();
-  initPastConcertsToggle();
 }
 
 if (document.readyState === 'loading') {

@@ -1,0 +1,45 @@
+---
+/**
+ * Strona testowa — weryfikacja Zadania 2 (BaseLayout + SEOHead).
+ * Usuń po zakończeniu migracji.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicGroup',
+  name: 'Góra Trolla',
+  description: 'Polski zespół muzyki dawnej',
+  url: 'https://goratrolla.pl',
+};
+---
+
+<BaseLayout
+  title="Test — BaseLayout OK"
+  description="Strona testowa weryfikująca BaseLayout i SEOHead."
+  lang="pl"
+  currentPage="test"
+  canonicalUrl="https://goratrolla.pl/test/"
+  ogLocale="pl_PL"
+  jsonLd={jsonLd}
+>
+  <!--
+    Przykład dodatkowego JSON-LD w <head> (np. Event schema dla strony koncertu).
+    Użyj atrybutu slot="head" na elemencie który ma trafić do <head>:
+    <script type="application/ld+json" slot="head">...</script>
+  -->
+
+  <main style="padding: 8rem 2rem; font-family: serif; color: #f2e8d0;">
+    <h1 style="color: #d4a843;">BaseLayout + SEOHead — Zadanie 2 ✓</h1>
+    <p>Sprawdź źródło strony — powinny być:</p>
+    <ul>
+      <li>canonical, hreflang (pl / en / x-default)</li>
+      <li>og:* meta tagi</li>
+      <li>twitter:* meta tagi</li>
+      <li>favicon SVG + manifest</li>
+      <li>JSON-LD MusicGroup</li>
+      <li>Google Fonts preconnect</li>
+      <li>Critical CSS inline</li>
+    </ul>
+  </main>
+</BaseLayout>

@@ -1,0 +1,113 @@
+---
+/**
+ * BaseLayout.astro — główny layout dla wszystkich stron Góra Trolla.
+ *
+ * Skrypty (nav, main, parallax, lightbox) są tymczasowo ładowane
+ * z /assets/js/ (public/) — zostaną zastąpione przez src/scripts/*.ts
+ * w Zadaniu 9.
+ */
+import SEOHead from '../components/SEOHead.astro';
+import '../styles/main.css';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: 'pl' | 'en';
+  currentPage: string;
+  canonicalUrl: string;
+  ogLocale: 'pl_PL' | 'en_US';
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  jsonLd?: object | object[];
+}
+
+const {
+  title,
+  description,
+  lang,
+  currentPage,
+  canonicalUrl,
+  ogLocale,
+  ogTitle,
+  ogDescription,
+  ogImage,
+  jsonLd,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+
+    <SEOHead
+      title={title}
+      description={description}
+      canonicalUrl={canonicalUrl}
+      ogLocale={ogLocale}
+      ogTitle={ogTitle}
+      ogDescription={ogDescription}
+      ogImage={ogImage}
+      jsonLd={jsonLd}
+    >
+      <!-- Slot dla dodatkowych elementów <head> (np. dodatkowe JSON-LD) -->
+      <slot name="head" />
+    </SEOHead>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=MedievalSharp&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Critical CSS inline — blokuje render tylko dla kluczowych reguł -->
+    <style>
+      :root {
+        --color-void: #0a0806;
+        --color-obsidian: #12100d;
+        --color-gold-pale: #f5e4a8;
+        --color-gold-bright: #d4a843;
+        --color-parchment: #f2e8d0;
+        --nav-height: 80px;
+      }
+      body {
+        background: var(--color-void);
+        color: var(--color-parchment);
+        margin: 0;
+      }
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: var(--nav-height);
+      }
+      .hero {
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+
+    <!--
+      Globalne skrypty — tymczasowo z public/assets/js/.
+      Zadanie 9 zastąpi je przez src/scripts/*.ts z bundlingiem Astro.
+    -->
+    <script is:inline src="/assets/js/nav.js" defer></script>
+    <script is:inline src="/assets/js/main.js" defer></script>
+    <script is:inline src="/assets/js/parallax.js" defer></script>
+    <script is:inline src="/assets/js/lightbox.js" defer></script>
+  </body>
+</html>

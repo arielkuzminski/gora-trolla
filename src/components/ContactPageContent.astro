@@ -8,8 +8,9 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const email = 'kontakt@goratrolla.pl';
-const emailRot13 = 'xbagnxg@tbengbyyn.cy';
+const email = 'arispen@gmail.com';
+const emailRot13 = 'nevfcra@tznvy.pbz';
+const phone = '+48 604 222 452';
 
 const copy = {
   pl: {
@@ -205,6 +206,15 @@ const t = copy[lang];
               data-email={emailRot13}
               style="font-family:var(--font-body);font-size:var(--text-lg);color:var(--color-parchment)"
             >{email}</a>
+          </div>
+
+          <div
+            style="padding:var(--space-6);background:var(--color-glass);border:var(--border-gold);border-radius:var(--radius-md);margin-bottom:var(--space-4);backdrop-filter:var(--glass-blur)"
+          >
+            <p style="font-family:var(--font-heading);font-size:var(--text-xs);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--color-gold-bright);margin-bottom:var(--space-2)">
+              {lang === 'pl' ? 'Telefon' : 'Phone'}
+            </p>
+            <a href={`tel:${phone.replace(/\s/g, '')}`} style="font-family:var(--font-body);font-size:var(--text-lg);color:var(--color-parchment)">{phone}</a>
           </div>
 
           <div

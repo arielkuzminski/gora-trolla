@@ -6,13 +6,14 @@ interface Props {
   instrument: string;
   bio: string;
   image?: string;
+  imagePosition?: string;
   lang: 'pl' | 'en';
   animateDelay?: number;
   sameAs?: string[];
   moreLabel?: string;
 }
 
-const { name, instrument, bio, image, lang, animateDelay, sameAs = [], moreLabel } = Astro.props;
+const { name, instrument, bio, image, imagePosition, lang, animateDelay, sameAs = [], moreLabel } = Astro.props;
 const t = useTranslations(lang);
 const defaultMoreLabel = t('musicians.more').replace('{name}', name);
 const placeholderAlt = t('musicians.placeholder_alt').replace('{name}', name);
@@ -28,7 +29,7 @@ const placeholderAlt = t('musicians.placeholder_alt').replace('{name}', name);
 >
   <div class="musician-card__image-wrap">
     {image ? (
-      <img class="musician-card__image" src={image} alt={name} itemprop="image" loading="lazy" />
+      <img class="musician-card__image" src={image} alt={name} itemprop="image" loading="lazy" style={imagePosition ? `object-position:${imagePosition}` : undefined} />
     ) : (
       <div
         class="musician-card__image"

@@ -8,7 +8,7 @@ interface ConcertData {
   venue: { pl: string; en: string };
   city: string;
   poster?: string;
-  description: { pl: string; en: string };
+  description?: { pl: string; en: string };
 }
 
 interface Props {
@@ -35,7 +35,7 @@ const upcoming = d >= now;
 
 const title = concert.title[lang];
 const venue = concert.venue[lang];
-const description = concert.description[lang];
+const description = concert.description?.[lang];
 const detailHref = '#';
 const moreLabel = lang === 'pl' ? 'Szczegóły' : 'Details';
 ---

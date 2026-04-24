@@ -11,12 +11,8 @@ interface ConcertData {
   date: string;
   venue: { pl: string; en: string };
   city: string;
-  type: 'sacred' | 'secular' | 'chamber';
-  period: 'medieval' | 'renaissance' | 'baroque';
-  free: boolean;
-  ticketUrl: string | null;
   poster?: string;
-  description: { pl: string; en: string };
+  description?: { pl: string; en: string };
 }
 
 interface Props {
@@ -26,11 +22,6 @@ interface Props {
 
 const { lang, allConcerts } = Astro.props;
 
-const now = new Date();
-now.setHours(0, 0, 0, 0);
-
-const upcomingConcerts = allConcerts.filter((concert) => new Date(concert.date).getTime() >= now.getTime());
-const pastConcerts = allConcerts.filter((concert) => new Date(concert.date).getTime() < now.getTime());
 
 const copy = {
   pl: {
@@ -40,9 +31,6 @@ const copy = {
     heading: 'Lista Koncertów',
     galleryLabel: 'Zdjęcia',
     galleryHeading: 'Galeria Koncertowa',
-    showPast: 'Pokaż minione koncerty',
-    hidePast: 'Ukryj minione koncerty',
-    pastHeading: 'Minione Koncerty',
     concertsAria: 'Lista koncertów',
     gallery: [
       { src: '/media/poznan.jpg', alt: 'Poznań', caption: 'Poznań' },
@@ -60,9 +48,6 @@ const copy = {
     heading: 'Concert List',
     galleryLabel: 'Photos',
     galleryHeading: 'Concert Gallery',
-    showPast: 'Show past concerts',
-    hidePast: 'Hide past concerts',
-    pastHeading: 'Past Concerts',
     concertsAria: 'Concert list',
     gallery: [
       { src: '/media/poznan.jpg', alt: 'Poznan', caption: 'Poznan' },
@@ -104,37 +89,10 @@ const t = copy[lang];
         aria-label={t.concertsAria}
         style="display:flex;flex-direction:column;gap:var(--space-4)"
       >
-        {upcomingConcerts.map((concert, index) => (
+        {allConcerts.map((concert, index) => (
           <ConcertCard concert={concert} lang={lang} animateDelay={(index % 6) + 1} />
         ))}
       </div>
-
-      {pastConcerts.length > 0 && (
-        <div style="margin-top:var(--space-10)" data-animate="fade-up">
-          <div style="display:flex;justify-content:center">
-            <button
-              id="toggle-past"
-              type="button"
-              class="btn btn--ghost"
-              data-show={t.showPast}
-              data-hide={t.hidePast}
-            >
-              {t.showPast}
-            </button>
-          </div>
-
-          <div id="past-concerts" hidden style="max-height:0;overflow:hidden;transition:max-height 0.6s ease">
-            <div style="margin-top:var(--space-10)">
-              <h3 style="margin-bottom:var(--space-6);text-align:center">{t.pastHeading}</h3>
-              <div id="past-concert-list" style="display:flex;flex-direction:column;gap:var(--space-4)">
-                {pastConcerts.map((concert, index) => (
-                  <ConcertCard concert={concert} lang={lang} animateDelay={((upcomingConcerts.length + index) % 6) + 1} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   </section>
 

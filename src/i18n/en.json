@@ -19,8 +19,6 @@
       "upcoming": "Upcoming",
       "past":     "Past"
     },
-    "show_past":    "Show past concerts",
-    "hide_past":    "Hide past concerts",
     "no_results":   "No concerts match your filters."
   },
   "musicians": {

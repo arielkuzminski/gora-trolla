@@ -12,69 +12,32 @@
     }
   },
   {
-    "id": "2026-05-22-krakow",
-    "title": { "pl": "Pieśni Wiosenne — Trubadurzy i Truwerzy", "en": "Spring Songs — Troubadours & Trouvères" },
-    "date": "2026-05-22T19:00:00",
-    "venue": { "pl": "Kościół Bożego Ciała", "en": "Corpus Christi Church" },
-    "city": "Kraków",
+    "id": "2026-08-08-bytow",
+    "title": { "pl": "IV Turniej Rycerski w Bytowie", "en": "4th Knights' Tournament in Bytów" },
+    "date": "2026-08-08T12:00:00",
+    "venue": { "pl": "Zamek w Bytowie", "en": "Bytów Castle" },
+    "city": "Bytów"
+  },
+  {
+    "id": "2020-09-09-gniew",
+    "title": { "pl": "Festiwal Muzyki w Gniewie", "en": "Music Festival in Gniew" },
+    "date": "2020-09-09T12:00:00",
+    "venue": { "pl": "Gniew", "en": "Gniew" },
+    "city": "Gniew",
     "description": {
-      "pl": "Recital pieśni prowansalskich i północnofrancuskich XIII wieku.",
-      "en": "A recital of Provençal and Northern French songs from the 13th century."
+      "pl": "Festiwal muzyki w Gniewie.",
+      "en": "Music festival in Gniew."
     }
   },
   {
-    "id": "2026-06-14-warszawa",
-    "title": { "pl": "Muzyka Dworska Renesansu", "en": "Renaissance Court Music" },
-    "date": "2026-06-14T18:30:00",
-    "venue": { "pl": "Zamek Królewski — Sala Rycerska", "en": "Royal Castle — Knight's Hall" },
-    "city": "Warszawa",
+    "id": "2021-08-07-swiecino",
+    "title": { "pl": "Bitwa pod Świecinem", "en": "Battle of Świecino" },
+    "date": "2021-08-07T12:00:00",
+    "venue": { "pl": "Świecino", "en": "Świecino" },
+    "city": "Świecino",
     "description": {
-      "pl": "Chansons, ballady i tańce z XVI-wiecznych dworów europejskich.",
-      "en": "Chansons, ballads and dances from 16th-century European courts."
-    }
-  },
-  {
-    "id": "2026-07-04-gdansk",
-    "title": { "pl": "Vox Angelica — Muzyka Sacra Baroku", "en": "Vox Angelica — Baroque Sacred Music" },
-    "date": "2026-07-04T20:00:00",
-    "venue": { "pl": "Bazylika Mariacka", "en": "St. Mary's Basilica" },
-    "city": "Gdańsk",
-    "description": {
-      "pl": "Motety i arie z dzieł Schütza, Buxtehudego i Pachelbela.",
-      "en": "Motets and arias from works by Schütz, Buxtehude and Pachelbel."
-    }
-  },
-  {
-    "id": "2026-08-20-poznan",
-    "title": { "pl": "Musica Ficta — Polifonia Średniowiecza", "en": "Musica Ficta — Medieval Polyphony" },
-    "date": "2026-08-20T19:30:00",
-    "venue": { "pl": "Katedra Poznańska", "en": "Poznań Cathedral" },
-    "city": "Poznań",
-    "description": {
-      "pl": "Organum, motety i conductus z rękopisów Notre Dame.",
-      "en": "Organum, motets and conductus from Notre Dame manuscripts."
-    }
-  },
-  {
-    "id": "2025-11-15-krakow",
-    "title": { "pl": "Advent w Muzyce Dawnej", "en": "Advent in Early Music" },
-    "date": "2025-11-15T18:00:00",
-    "venue": { "pl": "Kościół św. Katarzyny", "en": "St. Catherine's Church" },
-    "city": "Kraków",
-    "description": {
-      "pl": "Muzyka adwentowa od Perotin po Palestriny.",
-      "en": "Advent music from Perotin to Palestrina."
-    }
-  },
-  {
-    "id": "2025-09-06-wroclaw",
-    "title": { "pl": "Minnesang — Pieśni Rycerskie", "en": "Minnesang — Songs of Knighthood" },
-    "date": "2025-09-06T19:00:00",
-    "venue": { "pl": "Pałac Hatzfeldów", "en": "Hatzfeld Palace" },
-    "city": "Wrocław",
-    "description": {
-      "pl": "Lieder minnesingerów z XII–XIII wieku.",
-      "en": "Minnesingers' songs from the 12th–13th centuries."
+      "pl": "W 1462 roku w nocy z 16 na 17 września rozegrała się krwawa bitwa wojny trzynastoletniej pod wsią Świecino. Wojska krzyżackie zostały rozgromione przez polskich żołnierzy. Przyjmuje się, że śmierć poniosło trzy czwarte Krzyżaków. Bitwa była wielkim sukcesem, a jej następstwem było zdobycie Gniewu i powrót do wiślanego handlu.",
+      "en": "In 1462, on the night of 16–17 September, a bloody battle of the Thirteen Years' War was fought near the village of Świecino. The Teutonic forces were routed by Polish soldiers — it is estimated that three quarters of the Teutonic Knights perished. The battle was a great triumph, leading to the capture of Gniew and the restoration of Vistula trade."
     }
   },
   {
@@ -152,6 +115,17 @@
     "description": {
       "pl": "W opisie wydarzenia pojawia się skład: Jędrzej, Rafał, Maciej i Ariel.",
       "en": "The event description names the lineup: Jedrzej, Rafal, Maciej and Ariel."
+    }
+  },
+  {
+    "id": "2012-04-21-rumia",
+    "title": { "pl": "Pierwszy Koncert Góry Trolla", "en": "Góra Trolla's First Ever Concert" },
+    "date": "2012-04-21T00:00:00",
+    "venue": { "pl": "Tawerna", "en": "Tawerna" },
+    "city": "Rumia",
+    "description": {
+      "pl": "Pierwszy w historii koncert Góry Trolla.",
+      "en": "The very first Góra Trolla concert."
     }
   },
   {

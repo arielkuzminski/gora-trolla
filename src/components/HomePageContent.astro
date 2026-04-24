@@ -12,7 +12,7 @@ interface ConcertData {
   venue: { pl: string; en: string };
   city: string;
   poster?: string;
-  description: { pl: string; en: string };
+  description?: { pl: string; en: string };
 }
 
 interface Props {
@@ -171,7 +171,7 @@ const t = copy[lang];
         <h2 id="concerts-teaser-heading">{t.concertsHeading}</h2>
       </div>
 
-      <div class="grid-3" id="teaser-concerts">
+      <div id="teaser-concerts" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,360px));justify-content:center;gap:var(--space-6)">
         {teaserConcerts.map((concert, index) => (
           <ConcertCard concert={concert} lang={lang} animateDelay={index + 1} />
         ))}

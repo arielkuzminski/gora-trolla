@@ -13,7 +13,7 @@ interface GTConcert {
   venue: GTConcertText | string;
   city: string;
   poster?: string;
-  description?: GTConcertText | string;
+  description?: GTConcertText | string | null;
 }
 
 interface GTLightboxItem {

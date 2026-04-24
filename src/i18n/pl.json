@@ -19,8 +19,6 @@
       "upcoming": "Nadchodzące",
       "past":     "Minione"
     },
-    "show_past":    "Pokaż minione koncerty",
-    "hide_past":    "Ukryj minione koncerty",
     "no_results":   "Brak koncertów dla wybranych filtrów."
   },
   "musicians": {

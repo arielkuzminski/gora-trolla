@@ -55,6 +55,11 @@ const copy = {
         body: 'Zewnętrzne źródła potwierdzają działalność Góry Trolla od 2008 roku; początki wiązane są z Rumią i Trójmiastem.'
       },
       {
+        year: '2012',
+        title: 'Pierwszy Koncert',
+        body: 'Pierwszy w historii koncert Góry Trolla odbył się 21 kwietnia 2012 roku w Tawernie w Rumi.'
+      },
+      {
         year: '2014',
         title: 'Potwierdzone Występy w Gdyni',
         body: 'Publiczne zapowiedzi i relacje dokumentują występy m.in. w klubie Ucho podczas Folkowych Jarych Godów i Nocy Kupały.'
@@ -113,6 +118,11 @@ const copy = {
         year: '2008',
         title: 'Origins in the Tri-City Region',
         body: 'Public sources place the beginnings of Góra Trolla in Rumia and the wider Tri-City area.'
+      },
+      {
+        year: '2012',
+        title: 'First Concert',
+        body: 'The very first Góra Trolla concert took place on 21 April 2012 at Tawerna in Rumia.'
       },
       {
         year: '2014',
@@ -226,17 +236,16 @@ const t = copy[lang];
           <p>{t.philosophy1Body}</p>
         </div>
         <div class="alternating-block__image">
-          <div style="aspect-ratio:3/2;border:var(--border-gold);border-radius:var(--radius-md);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;background:var(--color-stone)">
-            <img src="/media/dudy1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" />
-            <img src="/media/dudy2.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div style="aspect-ratio:3/2;border:var(--border-gold);border-radius:var(--radius-md);overflow:hidden;background:var(--color-stone)">
+            <img src="/media/gdansk_1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
           </div>
         </div>
       </div>
 
       <div class="alternating-block" data-animate="fade-up">
         <div class="alternating-block__image">
-          <div style="aspect-ratio:3/2;border:var(--border-gold);border-radius:var(--radius-md);overflow:hidden;background:var(--color-stone)">
-            <img src="/media/rauschpfeife.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <div style="aspect-ratio:2/3;border:var(--border-gold);border-radius:var(--radius-md);overflow:hidden;background:var(--color-stone)">
+            <img src="/media/rauschpfeife.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
           </div>
         </div>
         <div class="alternating-block__content">
@@ -263,6 +272,7 @@ const t = copy[lang];
             instrument={meta.instrument}
             bio={musician.bio[lang]}
             image={musician.image}
+            imagePosition={musician.imagePosition}
             lang={lang}
             animateDelay={index + 1}
             sameAs={musician.sameAs}

@@ -16,6 +16,11 @@ interface Props {
   currentPage: string;
   canonicalUrl: string;
   ogLocale: 'pl_PL' | 'en_US';
+  alternates: {
+    pl: string;
+    en: string;
+    xDefault?: string;
+  };
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
@@ -29,6 +34,7 @@ const {
   currentPage,
   canonicalUrl,
   ogLocale,
+  alternates,
   ogTitle,
   ogDescription,
   ogImage,
@@ -48,6 +54,7 @@ const {
       description={description}
       canonicalUrl={canonicalUrl}
       ogLocale={ogLocale}
+      alternates={alternates}
       ogTitle={ogTitle}
       ogDescription={ogDescription}
       ogImage={ogImage}

@@ -1,0 +1,44 @@
+{
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/o-nas.html",
+      "destination": "/o-nas/",
+      "permanent": true
+    },
+    {
+      "source": "/koncerty.html",
+      "destination": "/koncerty/",
+      "permanent": true
+    },
+    {
+      "source": "/kontakt.html",
+      "destination": "/kontakt/",
+      "permanent": true
+    },
+    {
+      "source": "/en/index.html",
+      "destination": "/en/",
+      "permanent": true
+    },
+    {
+      "source": "/en/about.html",
+      "destination": "/en/about/",
+      "permanent": true
+    },
+    {
+      "source": "/en/concerts.html",
+      "destination": "/en/concerts/",
+      "permanent": true
+    },
+    {
+      "source": "/en/contact.html",
+      "destination": "/en/contact/",
+      "permanent": true
+    }
+  ]
+}

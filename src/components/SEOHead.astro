@@ -4,6 +4,11 @@ interface Props {
   description: string;
   canonicalUrl: string;
   ogLocale: 'pl_PL' | 'en_US';
+  alternates: {
+    pl: string;
+    en: string;
+    xDefault?: string;
+  };
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
@@ -15,17 +20,16 @@ const {
   description,
   canonicalUrl,
   ogLocale,
+  alternates,
   ogTitle,
   ogDescription,
   ogImage = 'https://goratrolla.pl/assets/images/icons/og-image.jpg',
   jsonLd,
 } = Astro.props;
 
-const plUrl = 'https://goratrolla.pl/';
-const enUrl = 'https://goratrolla.pl/en/';
-
 const effectiveOgTitle = ogTitle ?? title;
 const effectiveOgDescription = ogDescription ?? description;
+const xDefaultUrl = alternates.xDefault ?? alternates.pl;
 
 const jsonLdItems = jsonLd
   ? Array.isArray(jsonLd)
@@ -40,9 +44,9 @@ const jsonLdItems = jsonLd
 <link rel="canonical" href={canonicalUrl} />
 
 <!-- hreflang -->
-<link rel="alternate" hreflang="pl" href={plUrl} />
-<link rel="alternate" hreflang="en" href={enUrl} />
-<link rel="alternate" hreflang="x-default" href={plUrl} />
+<link rel="alternate" hreflang="pl" href={alternates.pl} />
+<link rel="alternate" hreflang="en" href={alternates.en} />
+<link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />

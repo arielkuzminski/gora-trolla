@@ -1,0 +1,111 @@
+---
+interface Props {
+  /** Eyebrow text above the main title */
+  tagline: string;
+  /** Main h1 — usually "Góra Trolla" */
+  heading: string;
+  /** Smaller subtitle rendered below heading */
+  subheading: string;
+  /** Primary CTA */
+  cta1Label: string;
+  cta1Href: string;
+  /** Secondary CTA */
+  cta2Label: string;
+  cta2Href: string;
+  /** aria-label for the <section> */
+  ariaLabel: string;
+}
+
+const { tagline, heading, subheading, cta1Label, cta1Href, cta2Label, cta2Href, ariaLabel } = Astro.props;
+---
+
+<section class="hero" aria-label={ariaLabel}>
+
+  <!-- Background photo -->
+  <div class="hero__bg" aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;">
+    <img
+      src="/assets/images/hero/hero-bg.jpg"
+      alt=""
+      style="width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0.45;display:block;"
+    />
+    <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(26,18,8,0.55) 0%,rgba(10,8,6,0.4) 50%,rgba(18,8,8,0.6) 100%);"></div>
+  </div>
+
+  <!-- Noise texture overlay -->
+  <div
+    aria-hidden="true"
+    style="position:absolute;inset:0;background:url('/assets/images/textures/noise.svg') repeat;opacity:0.04;pointer-events:none;z-index:1"
+  ></div>
+
+  <!-- Ember particles canvas (particles.js targets this id) -->
+  <canvas
+    id="hero-particles"
+    aria-hidden="true"
+    style="position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none"
+  ></canvas>
+
+  <!-- Corner ornaments -->
+  <svg class="hero-ornament hero-ornament--tl" width="80" height="80" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+    <path d="M4 4 L40 4 M4 4 L4 40" stroke="#d4a843" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M4 20 L20 4" stroke="#d4a843" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="4" cy="4" r="3" fill="#d4a843" opacity="0.7"/>
+    <path d="M14 4 L4 14" stroke="#d4a843" stroke-width="0.5" opacity="0.3"/>
+  </svg>
+  <svg class="hero-ornament hero-ornament--tr" width="80" height="80" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+    <path d="M4 4 L40 4 M4 4 L4 40" stroke="#d4a843" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="4" cy="4" r="3" fill="#d4a843" opacity="0.7"/>
+  </svg>
+  <svg class="hero-ornament hero-ornament--bl" width="80" height="80" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+    <path d="M4 4 L40 4 M4 4 L4 40" stroke="#d4a843" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="4" cy="4" r="3" fill="#d4a843" opacity="0.7"/>
+  </svg>
+  <svg class="hero-ornament hero-ornament--br" width="80" height="80" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+    <path d="M4 4 L40 4 M4 4 L4 40" stroke="#d4a843" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="4" cy="4" r="3" fill="#d4a843" opacity="0.7"/>
+  </svg>
+
+  <!-- Hero content -->
+  <div class="hero__content" style="position:relative;z-index:3;text-align:center;padding:var(--space-8) var(--space-6);max-width:900px">
+
+    <p class="t-eyebrow" style="margin-bottom:var(--space-6);animation:fadeIn 1s ease both">
+      {tagline}
+    </p>
+
+    <h1 class="t-hero t-hero--animated" style="margin-bottom:var(--space-8);animation:fadeUp 1.2s ease 0.2s both">
+      {heading}<br>
+      <span style="font-size:0.45em;letter-spacing:0.12em;opacity:0.85">{subheading}</span>
+    </h1>
+
+    <!-- Ornamental divider -->
+    <div
+      aria-hidden="true"
+      style="display:flex;align-items:center;justify-content:center;gap:var(--space-4);margin-bottom:var(--space-10);animation:fadeIn 1s ease 0.6s both"
+    >
+      <div style="height:1px;width:60px;background:linear-gradient(to right,transparent,var(--color-gold-bright))"></div>
+      <span style="color:var(--color-gold-bright);font-size:1.2rem">✦</span>
+      <div style="height:1px;width:60px;background:linear-gradient(to left,transparent,var(--color-gold-bright))"></div>
+    </div>
+
+    <!-- CTAs -->
+    <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;animation:fadeUp 1s ease 0.8s both">
+      <a href={cta1Href} class="btn btn--primary btn--shimmer" data-animate>
+        {cta1Label}
+      </a>
+      <a href={cta2Href} class="btn btn--ghost" data-animate>
+        {cta2Label}
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div
+    class="scroll-indicator"
+    style="position:absolute;bottom:var(--space-8);left:50%;transform:translateX(-50%);z-index:3"
+    aria-hidden="true"
+  >
+    <svg class="scroll-indicator__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+</section>

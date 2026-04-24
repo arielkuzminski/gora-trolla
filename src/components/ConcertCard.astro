@@ -1,0 +1,112 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface ConcertData {
+  id: string;
+  title: { pl: string; en: string };
+  date: string;
+  venue: { pl: string; en: string };
+  city: string;
+  type: 'sacred' | 'secular' | 'chamber';
+  period: 'medieval' | 'renaissance' | 'baroque';
+  free: boolean;
+  ticketUrl: string | null;
+  poster?: string;
+  description: { pl: string; en: string };
+}
+
+interface Props {
+  concert: ConcertData;
+  lang: 'pl' | 'en';
+  animateDelay?: number;
+}
+
+const { concert, lang, animateDelay } = Astro.props;
+const t = useTranslations(lang);
+
+// Date helpers (build-time, locale-aware)
+const MONTHS_PL = ['Sty','Lut','Mar','Kwi','Maj','Cze','Lip','Sie','Wrz','Paź','Lis','Gru'];
+const MONTHS_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+const d      = new Date(concert.date);
+const day    = d.getDate();
+const month  = lang === 'pl' ? MONTHS_PL[d.getMonth()] : MONTHS_EN[d.getMonth()];
+const year   = d.getFullYear();
+const time   = d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
+
+const now     = new Date();
+now.setHours(0, 0, 0, 0);
+const upcoming = d >= now;
+
+// i18n labels
+const title       = concert.title[lang];
+const venue       = concert.venue[lang];
+const description = concert.description[lang];
+const typeLabel   = t(`concerts.type_label.${concert.type}`);
+const periodLabel = t(`concerts.period_label.${concert.period}`);
+const freeLabel   = t('concerts.free_entry');
+const ticketLabel = lang === 'pl' ? 'Bilety' : 'Tickets';
+const moreLabel   = lang === 'pl' ? 'Szczegóły' : 'Details';
+---
+
+<article
+  class={`concert-card${upcoming ? '' : ' concert-card--past'}`}
+  data-concert-type={concert.type}
+  data-concert-period={concert.period}
+  data-concert-date={concert.date}
+  data-upcoming={upcoming ? '1' : '0'}
+  data-animate="fade-up"
+  data-animate-delay={animateDelay}
+  itemscope
+  itemtype="https://schema.org/Event"
+>
+  <div class="concert-card__date">
+    <span class="concert-card__day" itemprop="startDate" content={concert.date}>{day}</span>
+    <span class="concert-card__month">{month}</span>
+    <span class="concert-card__year">{year}</span>
+  </div>
+
+  <div class="concert-card__content">
+    <h3 class="concert-card__title" itemprop="name">{title}</h3>
+    <p class="concert-card__venue" itemprop="location">
+      {venue}, {concert.city} &bull; {time}
+    </p>
+
+    {description && (
+      <p class="concert-card__desc" style="font-size:var(--text-sm);color:var(--color-faded);margin-top:var(--space-2)">
+        {description}
+      </p>
+    )}
+
+    <div class="concert-card__meta">
+      <span class="tag tag--type">{typeLabel}</span>
+      <span class="tag tag--period">{periodLabel}</span>
+    </div>
+
+    <div class="concert-card__footer">
+      {concert.free ? (
+        <span class="tag tag--free">{freeLabel}</span>
+      ) : concert.ticketUrl ? (
+        <span class="tag tag--type">{ticketLabel}</span>
+      ) : (
+        <span></span>
+      )}
+
+      {concert.ticketUrl ? (
+        <a
+          href={concert.ticketUrl}
+          class="btn btn--ghost"
+          style="padding:var(--space-1) var(--space-4);font-size:var(--text-xs)"
+          target="_blank"
+          rel="noopener"
+        >
+          {ticketLabel} →
+        </a>
+      ) : (
+        <span style="font-size:var(--text-xs);color:var(--color-faded)">{moreLabel}</span>
+      )}
+    </div>
+  </div>
+
+  <meta itemprop="performer" content="Góra Trolla" />
+</article>

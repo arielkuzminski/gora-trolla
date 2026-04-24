@@ -1,0 +1,36 @@
+---
+interface Props {
+  /** Thumbnail image URL (shown in grid) */
+  src: string;
+  /** Alt text for the thumbnail */
+  alt: string;
+  /** Full-size image URL opened by lightbox (data-full) */
+  fullSrc: string;
+  /** Caption shown in overlay and lightbox */
+  caption: string;
+  /** Optional data-animate-delay value */
+  animateDelay?: number;
+}
+
+const { src, alt, fullSrc, caption, animateDelay } = Astro.props;
+---
+
+<div
+  class="gallery-item"
+  data-full={fullSrc}
+  data-caption={caption}
+  data-animate="fade-up"
+  data-animate-delay={animateDelay}
+  role="button"
+  tabindex="0"
+  aria-label={caption}
+>
+  <img
+    src={src}
+    alt={alt}
+    style="width:100%;height:100%;object-fit:cover;display:block;"
+  />
+  <div class="gallery-item__overlay">
+    <span class="gallery-item__caption">{caption}</span>
+  </div>
+</div>

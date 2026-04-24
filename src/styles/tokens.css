@@ -90,7 +90,7 @@
   --space-40:  10rem;
   --space-48:  12rem;
 
-  --section-pad-y: clamp(var(--space-16), 9vw, var(--space-48));
+  --section-pad-y: clamp(var(--space-16), 8vw, var(--space-24));
   --section-pad-x: clamp(var(--space-6), 5vw, var(--space-24));
 
   /* --- CIENIE I BLASK --- */

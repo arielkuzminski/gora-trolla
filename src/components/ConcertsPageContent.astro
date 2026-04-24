@@ -1,0 +1,176 @@
+---
+import ConcertCard from './ConcertCard.astro';
+import FilterBar from './FilterBar.astro';
+import Footer from './Footer.astro';
+import GalleryItem from './GalleryItem.astro';
+import Nav from './Nav.astro';
+
+interface ConcertData {
+  id: string;
+  title: { pl: string; en: string };
+  date: string;
+  venue: { pl: string; en: string };
+  city: string;
+  type: 'sacred' | 'secular' | 'chamber';
+  period: 'medieval' | 'renaissance' | 'baroque';
+  free: boolean;
+  ticketUrl: string | null;
+  poster?: string;
+  description: { pl: string; en: string };
+}
+
+interface Props {
+  lang: 'pl' | 'en';
+  allConcerts: ConcertData[];
+}
+
+const { lang, allConcerts } = Astro.props;
+
+const now = new Date();
+now.setHours(0, 0, 0, 0);
+
+const upcomingConcerts = allConcerts.filter((concert) => new Date(concert.date).getTime() >= now.getTime());
+const pastConcerts = allConcerts.filter((concert) => new Date(concert.date).getTime() < now.getTime());
+
+const copy = {
+  pl: {
+    skipLink: 'Przejdź do treści głównej',
+    heroEyebrow: 'Kalendarz Muzyczny',
+    heroTitle: 'Koncerty',
+    heading: 'Lista Koncertów',
+    galleryLabel: 'Zdjęcia',
+    galleryHeading: 'Galeria Koncertowa',
+    showPast: 'Pokaż minione koncerty',
+    hidePast: 'Ukryj minione koncerty',
+    pastHeading: 'Minione Koncerty',
+    concertsAria: 'Lista koncertów',
+    gallery: [
+      { src: '/media/poznan.jpg', alt: 'Poznań', caption: 'Poznań' },
+      { src: '/media/bari_wlochy.jpg', alt: 'Bari, Włochy', caption: 'Bari, Włochy' },
+      { src: '/media/scyzorkon.jpg', alt: 'Scyzorykon', caption: 'Scyzorykon' },
+      { src: '/media/rumia.jpg', alt: 'Rumia', caption: 'Rumia' },
+      { src: '/media/gdansk_2.jpg', alt: 'Gdańsk', caption: 'Gdańsk' },
+      { src: '/media/Lad_nad_warta.jpg', alt: 'Ląd nad Wartą', caption: 'Ląd nad Wartą' },
+    ],
+  },
+  en: {
+    skipLink: 'Skip to main content',
+    heroEyebrow: 'Musical Calendar',
+    heroTitle: 'Concerts',
+    heading: 'Concert List',
+    galleryLabel: 'Photos',
+    galleryHeading: 'Concert Gallery',
+    showPast: 'Show past concerts',
+    hidePast: 'Hide past concerts',
+    pastHeading: 'Past Concerts',
+    concertsAria: 'Concert list',
+    gallery: [
+      { src: '/media/poznan.jpg', alt: 'Poznan', caption: 'Poznan' },
+      { src: '/media/bari_wlochy.jpg', alt: 'Bari, Italy', caption: 'Bari, Italy' },
+      { src: '/media/scyzorkon.jpg', alt: 'Scyzorykon', caption: 'Scyzorykon' },
+      { src: '/media/rumia.jpg', alt: 'Rumia', caption: 'Rumia' },
+      { src: '/media/gdansk_2.jpg', alt: 'Gdansk', caption: 'Gdansk' },
+      { src: '/media/Lad_nad_warta.jpg', alt: 'Lad nad Warta', caption: 'Lad nad Warta' },
+    ],
+  },
+} as const;
+
+const t = copy[lang];
+---
+
+<a class="skip-link" href="#main-content">{t.skipLink}</a>
+
+<Nav lang={lang} currentPage="concerts" />
+
+<main id="main-content">
+  <div
+    class="page-hero"
+    style="background:linear-gradient(to bottom,rgba(10,8,6,0.3) 0%,rgba(10,8,6,0.75) 60%,rgba(10,8,6,0.97) 100%),linear-gradient(135deg,#201408 0%,#150d06 50%,#0d0806 100%);padding-top:var(--nav-height)"
+  >
+    <div class="page-hero__content container">
+      <p class="t-eyebrow" style="margin-bottom:var(--space-3)">{t.heroEyebrow}</p>
+      <h1 class="page-hero__title">{t.heroTitle}</h1>
+      <span class="page-hero__title-underline"></span>
+    </div>
+  </div>
+
+  <section class="section" aria-labelledby="concerts-heading">
+    <div class="container">
+      <div data-animate="fade-up">
+        <h2 id="concerts-heading" class="visually-hidden">{t.heading}</h2>
+        <FilterBar lang={lang} />
+      </div>
+
+      <div
+        id="concert-list"
+        aria-live="polite"
+        aria-label={t.concertsAria}
+        style="display:flex;flex-direction:column;gap:var(--space-4)"
+      >
+        {upcomingConcerts.map((concert, index) => (
+          <ConcertCard concert={concert} lang={lang} animateDelay={(index % 6) + 1} />
+        ))}
+      </div>
+
+      {pastConcerts.length > 0 && (
+        <div style="margin-top:var(--space-10)" data-animate="fade-up">
+          <div style="display:flex;justify-content:center">
+            <button
+              id="toggle-past"
+              type="button"
+              class="btn btn--ghost"
+              data-show={t.showPast}
+              data-hide={t.hidePast}
+            >
+              {t.showPast}
+            </button>
+          </div>
+
+          <div id="past-concerts" hidden style="max-height:0;overflow:hidden;transition:max-height 0.6s ease">
+            <div style="margin-top:var(--space-10)">
+              <h3 style="margin-bottom:var(--space-6);text-align:center">{t.pastHeading}</h3>
+              <div id="past-concert-list" style="display:flex;flex-direction:column;gap:var(--space-4)">
+                {pastConcerts.map((concert, index) => (
+                  <ConcertCard concert={concert} lang={lang} animateDelay={((upcomingConcerts.length + index) % 6) + 1} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section section--dark" aria-labelledby="gallery-concerts-heading">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:var(--space-12)" data-animate="fade-up">
+        <p class="section-label" style="justify-content:center">{t.galleryLabel}</p>
+        <h2 id="gallery-concerts-heading">{t.galleryHeading}</h2>
+      </div>
+
+      <div class="gallery-grid" data-gallery="concerts">
+        {t.gallery.map((item, index) => (
+          <GalleryItem
+            src={item.src}
+            alt={item.alt}
+            fullSrc={item.src}
+            caption={item.caption}
+            animateDelay={(index % 6) + 1}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</main>
+
+<Footer lang={lang} />
+
+<script type="application/json" id="concert-data" set:html={JSON.stringify(allConcerts)} />
+
+<script define:vars={{ lang }}>
+  localStorage.setItem('gt-lang', lang);
+</script>
+
+<script>
+  import '../scripts/concerts.ts';
+</script>

@@ -15,6 +15,11 @@ if (dataEl) {
     const MONTHS_PL = ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'];
     const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+    const rootList = document.getElementById('concert-list');
+    const pastSection = document.getElementById('past-concerts');
+    const pastList = document.getElementById('past-concert-list');
+    const togglePastBtn = document.getElementById('toggle-past');
+
     function getMonth(date: string) {
       const d = new Date(date);
       return lang === 'pl' ? MONTHS_PL[d.getMonth()] : MONTHS_EN[d.getMonth()];
@@ -34,7 +39,10 @@ if (dataEl) {
     }
 
     function isUpcoming(date: string) {
-      return new Date(date) >= new Date();
+      const concertDate = new Date(date);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      return concertDate >= today;
     }
 
     function localText(value: GTConcertText | string | undefined) {
@@ -112,6 +120,18 @@ if (dataEl) {
       period: 'all',
     };
 
+    function sortConcerts(items: GTConcert[]) {
+      const upcoming = items
+        .filter((concert) => isUpcoming(concert.date))
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+      const past = items
+        .filter((concert) => !isUpcoming(concert.date))
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+      return { upcoming, past };
+    }
+
     function filterConcerts() {
       return concerts.filter((concert) => {
         const upcoming = isUpcoming(concert.date);
@@ -123,27 +143,60 @@ if (dataEl) {
       });
     }
 
+    function fillList(target: HTMLElement | null, items: GTConcert[], delayOffset = 0) {
+      if (!target) return;
+      target.innerHTML = '';
+      items.forEach((concert, index) => {
+        const element = renderConcert(concert);
+        element.setAttribute('data-animate', 'fade-up');
+        element.setAttribute('data-animate-delay', String(((index + delayOffset) % 6) + 1));
+        target.appendChild(element);
+      });
+    }
+
+    function setPastVisibility(visible: boolean) {
+      if (!pastSection || !togglePastBtn) return;
+      pastSection.hidden = false;
+      if (!visible) {
+        pastSection.classList.remove('is-open');
+      }
+      togglePastBtn.hidden = !visible;
+    }
+
     function render() {
-      const list = document.getElementById('concert-list');
-      if (!list) return;
+      if (!rootList) return;
 
       const filtered = filterConcerts();
-      list.innerHTML = '';
+      const { upcoming, past } = sortConcerts(filtered);
+
+      rootList.innerHTML = '';
+      if (pastList) {
+        pastList.innerHTML = '';
+      }
 
       if (filtered.length === 0) {
         const msg = lang === 'pl'
           ? 'Brak koncertów dla wybranych filtrów.'
           : 'No concerts match your filters.';
-        list.innerHTML = `<p style="color:var(--color-faded);text-align:center;padding:var(--space-12) 0">${msg}</p>`;
+        rootList.innerHTML = `<p style="color:var(--color-faded);text-align:center;padding:var(--space-12) 0">${msg}</p>`;
+        setPastVisibility(false);
         return;
       }
 
-      filtered.forEach((concert, index) => {
-        const element = renderConcert(concert);
-        element.setAttribute('data-animate', 'fade-up');
-        element.setAttribute('data-animate-delay', String((index % 6) + 1));
-        list.appendChild(element);
-      });
+      const usingDefaultSplit =
+        activeFilters.time === 'all' &&
+        activeFilters.type === 'all' &&
+        activeFilters.period === 'all' &&
+        !!pastList;
+
+      if (usingDefaultSplit) {
+        fillList(rootList, upcoming);
+        fillList(pastList, past, upcoming.length);
+        setPastVisibility(past.length > 0);
+      } else {
+        fillList(rootList, [...upcoming, ...past]);
+        setPastVisibility(false);
+      }
 
       window.initEntranceAnimations?.();
     }
@@ -174,54 +227,21 @@ if (dataEl) {
       });
     }
 
-    function injectEventSchemas() {
-      const schemas = concerts
-        .filter((concert) => isUpcoming(concert.date))
-        .map((concert) => ({
-          '@context': 'https://schema.org',
-          '@type': 'Event',
-          name: localText(concert.title),
-          startDate: concert.date,
-          eventStatus: 'https://schema.org/EventScheduled',
-          eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-          location: {
-            '@type': 'Place',
-            name: localText(concert.venue),
-            address: {
-              '@type': 'PostalAddress',
-              addressLocality: concert.city,
-              addressCountry: 'PL',
-            },
-          },
-          performer: {
-            '@type': 'MusicGroup',
-            name: 'Góra Trolla',
-            url: 'https://goratrolla.pl',
-          },
-          organizer: {
-            '@type': 'MusicGroup',
-            name: 'Góra Trolla',
-            url: 'https://goratrolla.pl',
-          },
-          isAccessibleForFree: concert.free,
-          offers: concert.ticketUrl ? {
-            '@type': 'Offer',
-            url: concert.ticketUrl,
-            availability: 'https://schema.org/InStock',
-          } : undefined,
-        }));
+    function initPastToggle() {
+      if (!togglePastBtn || !pastSection) return;
 
-      if (!schemas.length) return;
-
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.textContent = JSON.stringify(schemas);
-      document.head.appendChild(script);
+      togglePastBtn.addEventListener('click', () => {
+        const isOpen = pastSection.classList.contains('is-open');
+        pastSection.classList.toggle('is-open', !isOpen);
+        togglePastBtn.textContent = isOpen
+          ? (togglePastBtn.getAttribute('data-show') || 'Pokaż minione koncerty')
+          : (togglePastBtn.getAttribute('data-hide') || 'Ukryj minione koncerty');
+      });
     }
 
     function initConcerts() {
-      injectEventSchemas();
       initFilters();
+      initPastToggle();
       render();
     }
 

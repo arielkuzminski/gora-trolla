@@ -24,29 +24,27 @@ interface Props {
 const { concert, lang, animateDelay } = Astro.props;
 const t = useTranslations(lang);
 
-// Date helpers (build-time, locale-aware)
-const MONTHS_PL = ['Sty','Lut','Mar','Kwi','Maj','Cze','Lip','Sie','Wrz','Paź','Lis','Gru'];
-const MONTHS_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MONTHS_PL = ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'];
+const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-const d      = new Date(concert.date);
-const day    = d.getDate();
-const month  = lang === 'pl' ? MONTHS_PL[d.getMonth()] : MONTHS_EN[d.getMonth()];
-const year   = d.getFullYear();
-const time   = d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
+const d = new Date(concert.date);
+const day = d.getDate();
+const month = lang === 'pl' ? MONTHS_PL[d.getMonth()] : MONTHS_EN[d.getMonth()];
+const year = d.getFullYear();
+const time = d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
 
-const now     = new Date();
+const now = new Date();
 now.setHours(0, 0, 0, 0);
 const upcoming = d >= now;
 
-// i18n labels
-const title       = concert.title[lang];
-const venue       = concert.venue[lang];
+const title = concert.title[lang];
+const venue = concert.venue[lang];
 const description = concert.description[lang];
-const typeLabel   = t(`concerts.type_label.${concert.type}`);
+const typeLabel = t(`concerts.type_label.${concert.type}`);
 const periodLabel = t(`concerts.period_label.${concert.period}`);
-const freeLabel   = t('concerts.free_entry');
+const freeLabel = t('concerts.free_entry');
 const ticketLabel = lang === 'pl' ? 'Bilety' : 'Tickets';
-const moreLabel   = lang === 'pl' ? 'Szczegóły' : 'Details';
+const moreLabel = lang === 'pl' ? 'Szczegóły' : 'Details';
 ---
 
 <article

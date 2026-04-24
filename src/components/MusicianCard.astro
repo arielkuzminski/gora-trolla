@@ -1,0 +1,56 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  name: string;
+  instrument: string;
+  bio: string;
+  image?: string;
+  lang: 'pl' | 'en';
+  animateDelay?: number;
+  sameAs?: string[];
+}
+
+const { name, instrument, bio, image, lang, animateDelay, sameAs = [] } = Astro.props;
+const t = useTranslations(lang);
+const moreLabel = t('musicians.more').replace('{name}', name);
+const placeholderAlt = t('musicians.placeholder_alt').replace('{name}', name);
+---
+
+<article
+  class="musician-card"
+  role="listitem"
+  data-animate="scale-in"
+  data-animate-delay={animateDelay}
+  itemscope
+  itemtype="https://schema.org/Person"
+>
+  <div class="musician-card__image-wrap">
+    {image ? (
+      <img class="musician-card__image" src={image} alt={name} itemprop="image" loading="lazy" />
+    ) : (
+      <div
+        class="musician-card__image"
+        style="display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#181614,#0e0c0a)"
+        aria-label={placeholderAlt}
+      >
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="16" r="10" stroke="#d4a843" stroke-width="1.5" opacity="0.4"></circle>
+          <path d="M8 42 C8 30 40 30 40 42" stroke="#d4a843" stroke-width="1.5" opacity="0.4"></path>
+        </svg>
+      </div>
+    )}
+  </div>
+
+  <div class="musician-card__body">
+    <h3 class="musician-card__name" itemprop="name">{name}</h3>
+    <p class="musician-card__instrument" itemprop="jobTitle">{instrument}</p>
+
+    <details>
+      <summary>{moreLabel}</summary>
+      <p itemprop="description">{bio}</p>
+    </details>
+
+    {sameAs.map((url) => <link itemprop="sameAs" href={url} />)}
+  </div>
+</article>

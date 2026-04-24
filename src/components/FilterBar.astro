@@ -1,0 +1,44 @@
+---
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: 'pl' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const groups = [
+  {
+    id: 'time',
+    options: ['all', 'upcoming', 'past']
+  },
+  {
+    id: 'type',
+    options: ['all', 'sacred', 'secular', 'chamber']
+  },
+  {
+    id: 'period',
+    options: ['all', 'medieval', 'renaissance', 'baroque']
+  }
+] as const;
+---
+
+<div class="filter-bar" role="group" aria-label={lang === 'pl' ? 'Filtruj koncerty' : 'Filter concerts'}>
+  {groups.map((group) => (
+    <div class="filter-group">
+      <span class="filter-group__label">{t(`concerts.filter.${group.id}`)}</span>
+      {group.options.map((value) => (
+        <button
+          type="button"
+          class="filter-btn"
+          data-filter-group={group.id}
+          data-filter-value={value}
+          aria-pressed={value === 'all' ? 'true' : 'false'}
+        >
+          {t(`concerts.filter.${value}`)}
+        </button>
+      ))}
+    </div>
+  ))}
+</div>

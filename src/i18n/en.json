@@ -14,6 +14,9 @@
   },
   "concerts": {
     "filter": {
+      "time":        "Time",
+      "type":        "Type",
+      "period":      "Period",
       "all":         "All",
       "upcoming":    "Upcoming",
       "past":        "Past",
@@ -38,6 +41,10 @@
     "show_past":    "Show past concerts",
     "hide_past":    "Hide past concerts",
     "no_results":   "No concerts match your filters."
+  },
+  "musicians": {
+    "more": "More about {name}",
+    "placeholder_alt": "{name} portrait placeholder"
   },
   "contact": {
     "form_name":       "Full name",

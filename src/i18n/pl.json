@@ -14,6 +14,9 @@
   },
   "concerts": {
     "filter": {
+      "time":        "Czas",
+      "type":        "Typ",
+      "period":      "Epoka",
       "all":         "Wszystkie",
       "upcoming":    "Nadchodzące",
       "past":        "Minione",
@@ -38,6 +41,10 @@
     "show_past":    "Pokaż minione koncerty",
     "hide_past":    "Ukryj minione koncerty",
     "no_results":   "Brak koncertów dla wybranych filtrów."
+  },
+  "musicians": {
+    "more": "Więcej o {name}",
+    "placeholder_alt": "Placeholder portretu {name}"
   },
   "contact": {
     "form_name":       "Imię i nazwisko",

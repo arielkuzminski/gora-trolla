@@ -1,9 +1,10 @@
 ---
 /**
- * Strona testowa — weryfikacja Zadania 2 (BaseLayout + SEOHead).
+ * Strona testowa — weryfikacja Zadań 2–3 (BaseLayout + SEOHead + Nav).
  * Usuń po zakończeniu migracji.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -29,17 +30,16 @@ const jsonLd = {
     <script type="application/ld+json" slot="head">...</script>
   -->
 
+  <Nav lang="pl" currentPage="home" />
+
   <main style="padding: 8rem 2rem; font-family: serif; color: #f2e8d0;">
-    <h1 style="color: #d4a843;">BaseLayout + SEOHead — Zadanie 2 ✓</h1>
-    <p>Sprawdź źródło strony — powinny być:</p>
+    <h1 style="color: #d4a843;">BaseLayout + SEOHead + Nav — Zadania 2–3 ✓</h1>
+    <p>Sprawdź:</p>
     <ul>
-      <li>canonical, hreflang (pl / en / x-default)</li>
-      <li>og:* meta tagi</li>
-      <li>twitter:* meta tagi</li>
-      <li>favicon SVG + manifest</li>
-      <li>JSON-LD MusicGroup</li>
-      <li>Google Fonts preconnect</li>
-      <li>Critical CSS inline</li>
+      <li>Nawigacja renderuje się u góry (PL, "Strona Główna" z aria-current="page")</li>
+      <li>Logo z logo-troll.jpg</li>
+      <li>Lang switcher: PL aktywne, EN link do /en/</li>
+      <li>canonical, hreflang, og:*, twitter:*, JSON-LD w źródle</li>
     </ul>
   </main>
 </BaseLayout>

@@ -5,6 +5,7 @@
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -33,13 +34,14 @@ const jsonLd = {
   <Nav lang="pl" currentPage="home" />
 
   <main style="padding: 8rem 2rem; font-family: serif; color: #f2e8d0;">
-    <h1 style="color: #d4a843;">BaseLayout + SEOHead + Nav — Zadania 2–3 ✓</h1>
+    <h1 style="color: #d4a843;">BaseLayout + SEOHead + Nav + Footer — Zadania 2–4 ✓</h1>
     <p>Sprawdź:</p>
     <ul>
-      <li>Nawigacja renderuje się u góry (PL, "Strona Główna" z aria-current="page")</li>
-      <li>Logo z logo-troll.jpg</li>
-      <li>Lang switcher: PL aktywne, EN link do /en/</li>
+      <li>Nav u góry — PL, "Strona Główna" z aria-current="page"</li>
+      <li>Footer na dole — social links, świeca, copyright z rokiem</li>
       <li>canonical, hreflang, og:*, twitter:*, JSON-LD w źródle</li>
     </ul>
   </main>
+
+  <Footer lang="pl" />
 </BaseLayout>

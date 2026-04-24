@@ -135,13 +135,12 @@
 /* --- PAGE HERO (podstrony) --- */
 
 .page-hero {
-  min-height: 50vh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  padding-top: var(--nav-height);
   padding-bottom: var(--space-16);
   position: relative;
   overflow: hidden;
-  background: var(--color-obsidian);
 }
 
 .page-hero::before {
@@ -151,8 +150,8 @@
   background: linear-gradient(
     to bottom,
     rgba(10, 8, 6, 0.3) 0%,
-    rgba(10, 8, 6, 0.7) 60%,
-    rgba(10, 8, 6, 0.95) 100%
+    rgba(10, 8, 6, 0.5) 60%,
+    transparent 100%
   );
   z-index: 1;
 }
@@ -189,7 +188,12 @@
   background: linear-gradient(to right, var(--color-gold-bright), transparent);
 }
 
-.home-gradient-flow {
+.page-hero + .section,
+.page-hero + * > .section:first-child {
+  padding-top: var(--space-8);
+}
+
+.gradient-flow {
   position: relative;
   background:
     radial-gradient(circle at 14% 8%, rgba(122, 92, 30, 0.14) 0, transparent 24%),
@@ -198,18 +202,18 @@
     linear-gradient(180deg, #0a0806 0%, #110d09 22%, #17120d 52%, #1d1711 78%, #110d09 100%);
 }
 
-.home-gradient-flow > .section,
-.home-gradient-flow > .section.section--dark,
-.home-gradient-flow > .section.section--stone,
-.home-gradient-flow > .section.section--ember {
+.gradient-flow > .section,
+.gradient-flow > .section.section--dark,
+.gradient-flow > .section.section--stone,
+.gradient-flow > .section.section--ember {
   background: transparent;
 }
 
-.home-gradient-flow > .section {
+.gradient-flow > .section {
   position: relative;
 }
 
-.home-gradient-flow > .section::after {
+.gradient-flow > .section::after {
   content: '';
   position: absolute;
   inset: auto 0 0;
@@ -218,7 +222,7 @@
   pointer-events: none;
 }
 
-.home-gradient-flow > .section:last-child::after {
+.gradient-flow > .section:last-child::after {
   display: none;
 }
 

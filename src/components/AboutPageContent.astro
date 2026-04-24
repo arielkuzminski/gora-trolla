@@ -161,17 +161,14 @@ const t = copy[lang];
 <Nav lang={lang} currentPage="about" />
 
 <main id="main-content">
-  <div
-    class="page-hero"
-    style="background:linear-gradient(to bottom,rgba(10,8,6,0.3) 0%,rgba(10,8,6,0.75) 60%,rgba(10,8,6,0.97) 100%),linear-gradient(135deg,#2a1a08 0%,#1a1208 50%,#0d0a06 100%);padding-top:var(--nav-height)"
-  >
+  <div class="gradient-flow">
+  <div class="page-hero">
     <div class="page-hero__content container">
       <p class="t-eyebrow" style="margin-bottom:var(--space-3)">{t.heroEyebrow}</p>
       <h1 class="page-hero__title">{t.heroTitle}</h1>
       <span class="page-hero__title-underline"></span>
     </div>
   </div>
-
   <section class="section" aria-labelledby="history-heading">
     <div class="container container--narrow">
       <div data-animate="fade-up">
@@ -297,6 +294,7 @@ const t = copy[lang];
       </div>
     </div>
   </section>
+  </div>
 </main>
 
 <Footer lang={lang} />

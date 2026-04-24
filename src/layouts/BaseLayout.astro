@@ -105,9 +105,11 @@ const {
       Globalne skrypty — tymczasowo z public/assets/js/.
       Zadanie 9 zastąpi je przez src/scripts/*.ts z bundlingiem Astro.
     -->
-    <script is:inline src="/assets/js/nav.js" defer></script>
-    <script is:inline src="/assets/js/main.js" defer></script>
-    <script is:inline src="/assets/js/parallax.js" defer></script>
-    <script is:inline src="/assets/js/lightbox.js" defer></script>
+    <script>
+      import '../scripts/nav.ts';
+      import '../scripts/main.ts';
+      import '../scripts/parallax.ts';
+      import '../scripts/lightbox.ts';
+    </script>
   </body>
 </html>

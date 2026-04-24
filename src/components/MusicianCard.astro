@@ -9,11 +9,12 @@ interface Props {
   lang: 'pl' | 'en';
   animateDelay?: number;
   sameAs?: string[];
+  moreLabel?: string;
 }
 
-const { name, instrument, bio, image, lang, animateDelay, sameAs = [] } = Astro.props;
+const { name, instrument, bio, image, lang, animateDelay, sameAs = [], moreLabel } = Astro.props;
 const t = useTranslations(lang);
-const moreLabel = t('musicians.more').replace('{name}', name);
+const defaultMoreLabel = t('musicians.more').replace('{name}', name);
 const placeholderAlt = t('musicians.placeholder_alt').replace('{name}', name);
 ---
 
@@ -47,7 +48,7 @@ const placeholderAlt = t('musicians.placeholder_alt').replace('{name}', name);
     <p class="musician-card__instrument" itemprop="jobTitle">{instrument}</p>
 
     <details>
-      <summary>{moreLabel}</summary>
+      <summary>{moreLabel ?? defaultMoreLabel}</summary>
       <p itemprop="description">{bio}</p>
     </details>
 

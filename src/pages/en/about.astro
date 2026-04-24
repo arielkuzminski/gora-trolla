@@ -1,0 +1,43 @@
+---
+import AboutPageContent from '../../components/AboutPageContent.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { musicians } from '../../data/musicians';
+
+const englishJobTitles: Record<string, string> = {
+  Ariel: 'Bagpipes, shawms, flutes',
+  'Rafał': 'Irish bouzouki, flutes',
+  Krzysztof: 'Mandola',
+  'Jędrzej': 'Davul',
+  Maciej: 'Master of Ceremonies',
+  Jasio: 'One-man band',
+};
+
+const jsonLd = musicians.map((musician) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: musician.name,
+  jobTitle: englishJobTitles[musician.name] ?? musician.instruments,
+  description: musician.bio.en,
+  image: musician.image ? `https://goratrolla.pl${musician.image}` : undefined,
+  sameAs: musician.sameAs,
+  memberOf: {
+    '@type': 'MusicGroup',
+    name: 'Góra Trolla',
+    url: 'https://goratrolla.pl',
+  },
+}));
+---
+
+<BaseLayout
+  title="About - Góra Trolla | Early Music Ensemble"
+  description="Learn about the history and musicians of Góra Trolla - a Polish ensemble specializing in medieval, Renaissance and Baroque music."
+  lang="en"
+  currentPage="about"
+  canonicalUrl="https://goratrolla.pl/en/about/"
+  ogLocale="en_US"
+  ogTitle="About - Góra Trolla"
+  ogDescription="Learn about the history and musicians of Góra Trolla."
+  jsonLd={jsonLd}
+>
+  <AboutPageContent lang="en" />
+</BaseLayout>

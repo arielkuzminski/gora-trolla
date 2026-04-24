@@ -95,6 +95,60 @@ function initHeroFade() {
   }, { passive: true });
 }
 
+function initCursorCandle() {
+  const candle = document.querySelector<HTMLElement>('[data-cursor-candle]');
+  if (!candle) return;
+
+  const media = window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)');
+  if (media.matches) {
+    candle.hidden = true;
+    return;
+  }
+
+  let rafId = 0;
+  let targetX = window.innerWidth * 0.5;
+  let targetY = window.innerHeight * 0.5;
+  let currentX = targetX;
+  let currentY = targetY;
+
+  candle.hidden = false;
+  candle.style.opacity = '0';
+
+  const render = () => {
+    currentX += (targetX - currentX) * 0.12;
+    currentY += (targetY - currentY) * 0.12;
+    candle.style.setProperty('--cursor-candle-x', `${currentX}px`);
+    candle.style.setProperty('--cursor-candle-y', `${currentY}px`);
+    rafId = window.requestAnimationFrame(render);
+  };
+
+  const handleMove = (event: MouseEvent) => {
+    targetX = event.clientX;
+    targetY = event.clientY;
+    candle.style.opacity = '1';
+  };
+
+  const handleLeave = () => {
+    candle.style.opacity = '0';
+  };
+
+  document.addEventListener('mousemove', handleMove, { passive: true });
+  document.addEventListener('mouseleave', handleLeave);
+  rafId = window.requestAnimationFrame(render);
+
+  media.addEventListener('change', (event) => {
+    if (event.matches) {
+      candle.hidden = true;
+      candle.style.opacity = '0';
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener('mouseleave', handleLeave);
+    }
+  }, { once: true });
+}
+
 function initAmbientAudio() {
   const player = document.querySelector<HTMLElement>('[data-ambient-player]');
   const audio = document.querySelector<HTMLAudioElement>('[data-ambient-audio]');
@@ -153,6 +207,7 @@ function initMain() {
   initContactForm();
   initEmailObfuscation();
   initHeroFade();
+  initCursorCandle();
   initAmbientAudio();
 }
 

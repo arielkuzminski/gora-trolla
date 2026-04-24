@@ -125,9 +125,11 @@ const t = copy[lang];
     ariaLabel={t.heroAria}
   />
 
-  <section class="section" aria-labelledby="intro-heading">
-    <div class="container">
-      <div class="grid-2" style="align-items:center;gap:clamp(var(--space-12),6vw,var(--space-24))">
+  <div class="home-gradient-flow">
+
+    <section class="section section--intro" aria-labelledby="intro-heading">
+      <div class="container">
+        <div class="grid-2 home-intro-grid" style="gap:clamp(var(--space-12),6vw,var(--space-24))">
         <div data-animate="fade-up">
           <p class="section-label">{t.introLabel}</p>
           <h2 id="intro-heading" style="margin-bottom:var(--space-6)">{t.introHeading}</h2>
@@ -186,8 +188,8 @@ const t = copy[lang];
   </section>
 
   <section
-    class="section"
-    style="background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(90,60,10,0.15) 0%,transparent 70%),var(--color-void);text-align:center"
+    class="section section--quote"
+    style="text-align:center"
     aria-label={t.quoteAria}
   >
     <div class="container container--narrow">
@@ -227,6 +229,7 @@ const t = copy[lang];
       </div>
     </div>
   </section>
+  </div>
 </main>
 
 <Footer lang={lang} />

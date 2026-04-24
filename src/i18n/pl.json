@@ -14,30 +14,11 @@
   },
   "concerts": {
     "filter": {
-      "time":        "Czas",
-      "type":        "Typ",
-      "period":      "Epoka",
-      "all":         "Wszystkie",
-      "upcoming":    "Nadchodzące",
-      "past":        "Minione",
-      "sacred":      "Sakralne",
-      "secular":     "Świeckie",
-      "chamber":     "Kameralne",
-      "medieval":    "Średniowiecze",
-      "renaissance": "Renesans",
-      "baroque":     "Barok"
+      "time":     "Czas",
+      "all":      "Wszystkie",
+      "upcoming": "Nadchodzące",
+      "past":     "Minione"
     },
-    "type_label": {
-      "sacred":  "Sakralne",
-      "secular": "Świeckie",
-      "chamber": "Kameralne"
-    },
-    "period_label": {
-      "medieval":    "Średniowiecze",
-      "renaissance": "Renesans",
-      "baroque":     "Barok"
-    },
-    "free_entry":   "Wstęp wolny",
     "show_past":    "Pokaż minione koncerty",
     "hide_past":    "Ukryj minione koncerty",
     "no_results":   "Brak koncertów dla wybranych filtrów."

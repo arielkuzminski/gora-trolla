@@ -15,3 +15,6 @@ desktop.ini
 .vscode/
 
 *.log
+
+# Terminal Paste Image folder
+.cp-images/

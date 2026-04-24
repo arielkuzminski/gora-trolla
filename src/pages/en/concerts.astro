@@ -48,12 +48,6 @@ const jsonLd = allConcerts
       name: 'Góra Trolla',
       url: 'https://goratrolla.pl',
     },
-    isAccessibleForFree: concert.free,
-    offers: concert.ticketUrl ? {
-      '@type': 'Offer',
-      url: concert.ticketUrl,
-      availability: 'https://schema.org/InStock',
-    } : undefined,
   }));
 ---
 

@@ -547,6 +547,11 @@
   box-shadow: var(--shadow-gold-xs);
 }
 
+.btn--sm {
+  padding: var(--space-1) var(--space-4);
+  font-size: var(--text-xs);
+}
+
 /* Crimson accent */
 .btn--crimson {
   background: var(--color-crimson);
@@ -668,6 +673,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  height: 100%;
 }
 
 .concert-card__title {
@@ -685,6 +691,12 @@
   color: var(--color-vellum);
 }
 
+.concert-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-faded);
+  margin-top: var(--space-2);
+}
+
 .concert-card__meta {
   display: flex;
   flex-wrap: wrap;
@@ -697,7 +709,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: var(--space-4);
+  margin-top: auto;
   padding-top: var(--space-4);
   border-top: 1px solid rgba(212, 168, 67, 0.1);
 }

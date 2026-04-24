@@ -12,10 +12,6 @@ interface GTConcert {
   date: string;
   venue: GTConcertText | string;
   city: string;
-  type: 'sacred' | 'secular' | 'chamber';
-  period: 'medieval' | 'renaissance' | 'baroque';
-  free: boolean;
-  ticketUrl?: string | null;
   poster?: string;
   description?: GTConcertText | string;
 }

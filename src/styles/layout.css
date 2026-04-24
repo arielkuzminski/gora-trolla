@@ -223,7 +223,7 @@
 }
 
 .section--intro {
-  padding-top: clamp(var(--space-8), 5vw, var(--space-14));
+  padding-top: clamp(var(--space-16), 8vw, var(--space-24));
 }
 
 .home-intro-grid {

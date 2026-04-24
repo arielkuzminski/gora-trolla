@@ -5,11 +5,7 @@
     "date": "2026-04-25T16:00:00",
     "venue": { "pl": "Ruiny kościoła cysterskiego, ul. Kościelna 19", "en": "Cistercian Church Ruins, ul. Kościelna 19" },
     "city": "Rumia",
-    "type": "sacred",
-    "period": "medieval",
-    "free": true,
-    "ticketUrl": null,
-    "poster": "/assets/images/gallery/concert-rumia-2026.jpg",
+    "poster": "/media/plakat-kolejnego-koncertu.jpg",
     "description": {
       "pl": "Z okazji otwarcia ruin cysterskiego kościoła po rewitalizacji — wioska historyczna, pokazy rycerskie, pochód z pochodniami i koncert pieśni cysterskich.",
       "en": "Celebrating the reopening of Cistercian church ruins after renovation — historical village, knight shows, torchlit procession and concert of Cistercian songs."
@@ -21,10 +17,6 @@
     "date": "2026-05-22T19:00:00",
     "venue": { "pl": "Kościół Bożego Ciała", "en": "Corpus Christi Church" },
     "city": "Kraków",
-    "type": "sacred",
-    "period": "medieval",
-    "free": true,
-    "ticketUrl": null,
     "description": {
       "pl": "Recital pieśni prowansalskich i północnofrancuskich XIII wieku.",
       "en": "A recital of Provençal and Northern French songs from the 13th century."
@@ -36,10 +28,6 @@
     "date": "2026-06-14T18:30:00",
     "venue": { "pl": "Zamek Królewski — Sala Rycerska", "en": "Royal Castle — Knight's Hall" },
     "city": "Warszawa",
-    "type": "secular",
-    "period": "renaissance",
-    "free": false,
-    "ticketUrl": "https://bilety.pl/goratrolla",
     "description": {
       "pl": "Chansons, ballady i tańce z XVI-wiecznych dworów europejskich.",
       "en": "Chansons, ballads and dances from 16th-century European courts."
@@ -51,10 +39,6 @@
     "date": "2026-07-04T20:00:00",
     "venue": { "pl": "Bazylika Mariacka", "en": "St. Mary's Basilica" },
     "city": "Gdańsk",
-    "type": "sacred",
-    "period": "baroque",
-    "free": true,
-    "ticketUrl": null,
     "description": {
       "pl": "Motety i arie z dzieł Schütza, Buxtehudego i Pachelbela.",
       "en": "Motets and arias from works by Schütz, Buxtehude and Pachelbel."
@@ -66,10 +50,6 @@
     "date": "2026-08-20T19:30:00",
     "venue": { "pl": "Katedra Poznańska", "en": "Poznań Cathedral" },
     "city": "Poznań",
-    "type": "sacred",
-    "period": "medieval",
-    "free": true,
-    "ticketUrl": null,
     "description": {
       "pl": "Organum, motety i conductus z rękopisów Notre Dame.",
       "en": "Organum, motets and conductus from Notre Dame manuscripts."
@@ -81,10 +61,6 @@
     "date": "2025-11-15T18:00:00",
     "venue": { "pl": "Kościół św. Katarzyny", "en": "St. Catherine's Church" },
     "city": "Kraków",
-    "type": "sacred",
-    "period": "renaissance",
-    "free": true,
-    "ticketUrl": null,
     "description": {
       "pl": "Muzyka adwentowa od Perotin po Palestriny.",
       "en": "Advent music from Perotin to Palestrina."
@@ -96,10 +72,6 @@
     "date": "2025-09-06T19:00:00",
     "venue": { "pl": "Pałac Hatzfeldów", "en": "Hatzfeld Palace" },
     "city": "Wrocław",
-    "type": "secular",
-    "period": "medieval",
-    "free": false,
-    "ticketUrl": "https://bilety.pl/goratrolla-wroclaw",
     "description": {
       "pl": "Lieder minnesingerów z XII–XIII wieku.",
       "en": "Minnesingers' songs from the 12th–13th centuries."
@@ -111,10 +83,6 @@
     "date": "2025-07-19T19:00:00",
     "venue": { "pl": "Scyzorykon — scena główna", "en": "Scyzorykon — main stage" },
     "city": "Kielce",
-    "type": "secular",
-    "period": "medieval",
-    "free": true,
-    "ticketUrl": null,
     "description": {
       "pl": "Występ zespołu wpisany do oficjalnego programu festiwalu Scyzorykon 2025.",
       "en": "The ensemble's performance listed in the official Scyzorykon 2025 festival program."
@@ -126,10 +94,6 @@
     "date": "2025-06-20T17:30:00",
     "venue": { "pl": "Podwórko Art / Ucho, ul. Św. Piotra 2", "en": "Podworko Art / Ucho, ul. Sw. Piotra 2" },
     "city": "Gdynia",
-    "type": "secular",
-    "period": "medieval",
-    "free": true,
-    "ticketUrl": null,
     "description": {
       "pl": "Publiczne zapowiedzi wydarzenia wymieniają Górę Trolla w line-upie festiwalu Folkowe Ucho 2025.",
       "en": "Public event announcements list Gora Trolla in the Folkowe Ucho 2025 lineup."
@@ -141,10 +105,6 @@
     "date": "2025-05-17T19:30:00",
     "venue": { "pl": "Piazza Redentore / plac przed Kościołem Chrystusa Odkupiciela", "en": "Piazza Redentore / square by Christ the Redeemer Church" },
     "city": "Bari",
-    "type": "secular",
-    "period": "renaissance",
-    "free": true,
-    "ticketUrl": null,
     "description": {
       "pl": "Koncert zespołu podczas wydarzenia poświęconego Bonie Sforzy; źródła potwierdzają także skład występu.",
       "en": "The ensemble performed during an event dedicated to Bona Sforza; sources also confirm the lineup for this concert."
@@ -156,10 +116,6 @@
     "date": "2020-07-19T18:00:00",
     "venue": { "pl": "Stary Rynek", "en": "Old Market Square" },
     "city": "Poznań",
-    "type": "secular",
-    "period": "renaissance",
-    "free": true,
-    "ticketUrl": null,
     "description": {
       "pl": "Relacja prasowa z koncertu na Jarmarku Świętojańskim; jedno z najlepszych publicznych źródeł zdjęć zespołu.",
       "en": "Press coverage of the ensemble's St. John's Fair performance; one of the best public sources of concert photos."
@@ -171,10 +127,6 @@
     "date": "2019-06-21T16:45:00",
     "venue": { "pl": "Park Miejski / Plac Jakuba Wejhera", "en": "City Park / Jakub Wejher Square" },
     "city": "Wejherowo",
-    "type": "sacred",
-    "period": "medieval",
-    "free": true,
-    "ticketUrl": null,
     "description": {
       "pl": "W harmonogramie wydarzenia opublikowano koncert Góry Trolla zaplanowany na 16:45–17:45.",
       "en": "The published event schedule lists Gora Trolla performing from 16:45 to 17:45."
@@ -186,10 +138,6 @@
     "date": "2016-04-22T19:30:00",
     "venue": { "pl": "Kościół OO. Bonifratrów", "en": "Brothers Hospitallers Church" },
     "city": "Cieszyn",
-    "type": "sacred",
-    "period": "medieval",
-    "free": true,
-    "ticketUrl": null,
     "description": {
       "pl": "Zapowiedziany koncert zespołu z podanym programem i składem w materiale lokalnego medium.",
       "en": "The concert was announced with program and lineup details in a local media article."
@@ -201,10 +149,6 @@
     "date": "2014-06-27T18:00:00",
     "venue": { "pl": "Klub Ucho, ul. Świętego Piotra 2", "en": "Klub Ucho, ul. Swietego Piotra 2" },
     "city": "Gdynia",
-    "type": "secular",
-    "period": "medieval",
-    "free": false,
-    "ticketUrl": null,
     "description": {
       "pl": "W opisie wydarzenia pojawia się skład: Jędrzej, Rafał, Maciej i Ariel.",
       "en": "The event description names the lineup: Jedrzej, Rafal, Maciej and Ariel."
@@ -216,10 +160,6 @@
     "date": "2014-03-20T18:30:00",
     "venue": { "pl": "Klub Ucho, ul. Świętego Piotra 2", "en": "Klub Ucho, ul. Swietego Piotra 2" },
     "city": "Gdynia",
-    "type": "secular",
-    "period": "medieval",
-    "free": false,
-    "ticketUrl": null,
     "description": {
       "pl": "Jedna z najwcześniejszych łatwo dostępnych publicznych zapowiedzi koncertu Góry Trolla z podanym miejscem, datą i fragmentem składu.",
       "en": "One of the earliest easily accessible public announcements of a Gora Trolla concert with date, venue and lineup details."

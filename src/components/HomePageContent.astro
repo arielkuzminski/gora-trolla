@@ -11,10 +11,6 @@ interface ConcertData {
   date: string;
   venue: { pl: string; en: string };
   city: string;
-  type: 'sacred' | 'secular' | 'chamber';
-  period: 'medieval' | 'renaissance' | 'baroque';
-  free: boolean;
-  ticketUrl: string | null;
   poster?: string;
   description: { pl: string; en: string };
 }
@@ -133,10 +129,10 @@ const t = copy[lang];
         <div data-animate="fade-up">
           <p class="section-label">{t.introLabel}</p>
           <h2 id="intro-heading" style="margin-bottom:var(--space-6)">{t.introHeading}</h2>
-          <p class="drop-cap" style="font-size:var(--text-lg);line-height:var(--leading-loose)">
+          <p class="drop-cap" style="font-size:var(--text-xl);line-height:var(--leading-loose)">
             {t.introLead}
           </p>
-          <p style="margin-top:var(--space-4)">
+          <p style="margin-top:var(--space-4);font-size:var(--text-lg)">
             {t.introBody}
           </p>
           <a href={t.introCtaHref} class="btn btn--ghost" style="margin-top:var(--space-8)">
@@ -149,7 +145,7 @@ const t = copy[lang];
             style="aspect-ratio:4/5;background:linear-gradient(135deg,var(--color-obsidian),var(--color-stone));border:var(--border-gold);border-radius:var(--radius-md);position:relative;overflow:hidden"
           >
             <img
-              src="/media/band_5.jpg"
+              src="/media/band_6.jpg"
               alt={t.introImageAlt}
               style="width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.02) brightness(0.92)"
             />

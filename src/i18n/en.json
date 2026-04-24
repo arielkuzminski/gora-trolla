@@ -14,30 +14,11 @@
   },
   "concerts": {
     "filter": {
-      "time":        "Time",
-      "type":        "Type",
-      "period":      "Period",
-      "all":         "All",
-      "upcoming":    "Upcoming",
-      "past":        "Past",
-      "sacred":      "Sacred",
-      "secular":     "Secular",
-      "chamber":     "Chamber",
-      "medieval":    "Medieval",
-      "renaissance": "Renaissance",
-      "baroque":     "Baroque"
+      "time":     "Time",
+      "all":      "All",
+      "upcoming": "Upcoming",
+      "past":     "Past"
     },
-    "type_label": {
-      "sacred":  "Sacred",
-      "secular": "Secular",
-      "chamber": "Chamber"
-    },
-    "period_label": {
-      "medieval":    "Medieval",
-      "renaissance": "Renaissance",
-      "baroque":     "Baroque"
-    },
-    "free_entry":   "Free entry",
     "show_past":    "Show past concerts",
     "hide_past":    "Hide past concerts",
     "no_results":   "No concerts match your filters."

@@ -7,10 +7,6 @@ interface ConcertData {
   date: string;
   venue: { pl: string; en: string };
   city: string;
-  type: 'sacred' | 'secular' | 'chamber';
-  period: 'medieval' | 'renaissance' | 'baroque';
-  free: boolean;
-  ticketUrl: string | null;
   poster?: string;
   description: { pl: string; en: string };
 }
@@ -40,17 +36,12 @@ const upcoming = d >= now;
 const title = concert.title[lang];
 const venue = concert.venue[lang];
 const description = concert.description[lang];
-const typeLabel = t(`concerts.type_label.${concert.type}`);
-const periodLabel = t(`concerts.period_label.${concert.period}`);
-const freeLabel = t('concerts.free_entry');
-const ticketLabel = lang === 'pl' ? 'Bilety' : 'Tickets';
+const detailHref = '#';
 const moreLabel = lang === 'pl' ? 'Szczegóły' : 'Details';
 ---
 
 <article
   class={`concert-card${upcoming ? '' : ' concert-card--past'}`}
-  data-concert-type={concert.type}
-  data-concert-period={concert.period}
   data-concert-date={concert.date}
   data-upcoming={upcoming ? '1' : '0'}
   data-animate="fade-up"
@@ -71,40 +62,36 @@ const moreLabel = lang === 'pl' ? 'Szczegóły' : 'Details';
     </p>
 
     {description && (
-      <p class="concert-card__desc" style="font-size:var(--text-sm);color:var(--color-faded);margin-top:var(--space-2)">
+      <p class="concert-card__desc">
         {description}
       </p>
     )}
 
-    <div class="concert-card__meta">
-      <span class="tag tag--type">{typeLabel}</span>
-      <span class="tag tag--period">{periodLabel}</span>
-    </div>
-
-    <div class="concert-card__footer">
-      {concert.free ? (
-        <span class="tag tag--free">{freeLabel}</span>
-      ) : concert.ticketUrl ? (
-        <span class="tag tag--type">{ticketLabel}</span>
-      ) : (
-        <span></span>
-      )}
-
-      {concert.ticketUrl ? (
+    {concert.poster && (
+      <div class="concert-card__footer">
         <a
-          href={concert.ticketUrl}
-          class="btn btn--ghost"
-          style="padding:var(--space-1) var(--space-4);font-size:var(--text-xs)"
-          target="_blank"
-          rel="noopener"
+          href="#"
+          class="btn btn--ghost btn--sm"
+          data-poster={concert.poster}
+          data-poster-title={title}
         >
-          {ticketLabel} →
+          {moreLabel} →
         </a>
-      ) : (
-        <span style="font-size:var(--text-xs);color:var(--color-faded)">{moreLabel}</span>
-      )}
-    </div>
+      </div>
+    )}
   </div>
 
   <meta itemprop="performer" content="Góra Trolla" />
 </article>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as Element)?.closest<HTMLAnchorElement>('a[data-poster]');
+    if (!btn) return;
+    e.preventDefault();
+    window.GoraTrollaLightbox?.open(
+      [{ src: btn.dataset.poster!, alt: btn.dataset.posterTitle ?? '' }],
+      0
+    );
+  });
+</script>

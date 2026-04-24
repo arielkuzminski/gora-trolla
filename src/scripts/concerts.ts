@@ -50,14 +50,6 @@ if (dataEl) {
       return value?.[lang] || value?.pl || '';
     }
 
-    function typeTag(label: string) {
-      return `<span class="tag tag--type">${label}</span>`;
-    }
-
-    function periodTag(label: string) {
-      return `<span class="tag tag--period">${label}</span>`;
-    }
-
     function renderConcert(concert: GTConcert) {
       const upcoming = isUpcoming(concert.date);
       const day = getDay(concert.date);
@@ -65,21 +57,10 @@ if (dataEl) {
       const year = getYear(concert.date);
       const time = getTime(concert.date);
 
-      const typeLabelPL = { sacred: 'Sakralne', secular: 'Świeckie', chamber: 'Kameralne' } as const;
-      const typeLabelEN = { sacred: 'Sacred', secular: 'Secular', chamber: 'Chamber' } as const;
-      const periodLabelPL = { medieval: 'Średniowiecze', renaissance: 'Renesans', baroque: 'Barok' } as const;
-      const periodLabelEN = { medieval: 'Medieval', renaissance: 'Renaissance', baroque: 'Baroque' } as const;
-
-      const typeLabel = lang === 'pl' ? typeLabelPL[concert.type] : typeLabelEN[concert.type];
-      const periodLabel = lang === 'pl' ? periodLabelPL[concert.period] : periodLabelEN[concert.period];
-      const freeLabel = lang === 'pl' ? 'Wstęp wolny' : 'Free entry';
       const moreLabel = lang === 'pl' ? 'Szczegóły' : 'Details';
-      const ticketLabel = lang === 'pl' ? 'Bilety' : 'Tickets';
 
       const article = document.createElement('article');
       article.className = `concert-card${upcoming ? '' : ' concert-card--past'}`;
-      article.setAttribute('data-concert-type', concert.type);
-      article.setAttribute('data-concert-period', concert.period);
       article.setAttribute('data-concert-date', concert.date);
       article.setAttribute('data-upcoming', upcoming ? '1' : '0');
       article.setAttribute('itemscope', '');
@@ -94,14 +75,9 @@ if (dataEl) {
         <div class="concert-card__content">
           <h3 class="concert-card__title" itemprop="name">${localText(concert.title)}</h3>
           <p class="concert-card__venue" itemprop="location">${localText(concert.venue)}, ${concert.city} &bull; ${time}</p>
-          ${concert.description ? `<p class="concert-card__desc" style="font-size:var(--text-sm);color:var(--color-faded);margin-top:var(--space-2)">${localText(concert.description)}</p>` : ''}
-          <div class="concert-card__meta">
-            ${typeTag(typeLabel)}
-            ${periodTag(periodLabel)}
-          </div>
+          ${concert.description ? `<p class="concert-card__desc">${localText(concert.description)}</p>` : ''}
           <div class="concert-card__footer">
-            <span class="${concert.free ? 'tag tag--free' : 'tag tag--type'}">${concert.free ? freeLabel : (concert.ticketUrl ? ticketLabel : '')}</span>
-            ${concert.ticketUrl ? `<a href="${concert.ticketUrl}" class="btn btn--ghost" style="padding:var(--space-1) var(--space-4);font-size:var(--text-xs)" target="_blank" rel="noopener">${ticketLabel} →</a>` : `<span style="font-size:var(--text-xs);color:var(--color-faded)">${moreLabel}</span>`}
+            ${concert.poster ? `<a href="#" class="btn btn--ghost btn--sm" data-poster="${concert.poster}" data-poster-title="${localText(concert.title)}">${moreLabel} →</a>` : ''}
           </div>
         </div>
         <meta itemprop="performer" content="Góra Trolla">
@@ -112,12 +88,8 @@ if (dataEl) {
 
     const activeFilters: {
       time: 'all' | 'upcoming' | 'past';
-      type: 'all' | 'sacred' | 'secular' | 'chamber';
-      period: 'all' | 'medieval' | 'renaissance' | 'baroque';
     } = {
       time: 'all',
-      type: 'all',
-      period: 'all',
     };
 
     function sortConcerts(items: GTConcert[]) {
@@ -137,8 +109,6 @@ if (dataEl) {
         const upcoming = isUpcoming(concert.date);
         if (activeFilters.time === 'upcoming' && !upcoming) return false;
         if (activeFilters.time === 'past' && upcoming) return false;
-        if (activeFilters.type !== 'all' && concert.type !== activeFilters.type) return false;
-        if (activeFilters.period !== 'all' && concert.period !== activeFilters.period) return false;
         return true;
       });
     }
@@ -185,8 +155,6 @@ if (dataEl) {
 
       const usingDefaultSplit =
         activeFilters.time === 'all' &&
-        activeFilters.type === 'all' &&
-        activeFilters.period === 'all' &&
         !!pastList;
 
       if (usingDefaultSplit) {
@@ -220,7 +188,7 @@ if (dataEl) {
           button.setAttribute('aria-pressed', button === btn ? 'true' : 'false');
         });
 
-        if (filterGroup === 'time' || filterGroup === 'type' || filterGroup === 'period') {
+        if (filterGroup === 'time') {
           activeFilters[filterGroup] = filterValue as never;
           render();
         }

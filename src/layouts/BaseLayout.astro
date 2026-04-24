@@ -104,6 +104,31 @@ const {
   <body>
     <slot />
 
+    <div
+      class="ambient-player"
+      data-ambient-player
+      data-state="paused"
+      aria-label={lang === 'pl' ? 'Odtwarzacz muzyki tła' : 'Background music player'}
+    >
+      <audio
+        data-ambient-audio
+        preload="none"
+        loop
+        src="/media/audio/background.mp3"
+      ></audio>
+      <button
+        type="button"
+        class="ambient-player__toggle"
+        data-ambient-toggle
+        data-label-play={lang === 'pl' ? 'Włącz muzykę' : 'Play music'}
+        data-label-pause={lang === 'pl' ? 'Wyłącz muzykę' : 'Pause music'}
+        aria-pressed="false"
+      >
+        <span class="ambient-player__icon" aria-hidden="true">♪</span>
+        <span data-ambient-label>{lang === 'pl' ? 'Włącz muzykę' : 'Play music'}</span>
+      </button>
+    </div>
+
     <!-- Globalne skrypty bundlowane przez Astro -->
     <script>
       import '../scripts/nav.ts';

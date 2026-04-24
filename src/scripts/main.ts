@@ -95,11 +95,65 @@ function initHeroFade() {
   }, { passive: true });
 }
 
+function initAmbientAudio() {
+  const player = document.querySelector<HTMLElement>('[data-ambient-player]');
+  const audio = document.querySelector<HTMLAudioElement>('[data-ambient-audio]');
+  const button = document.querySelector<HTMLButtonElement>('[data-ambient-toggle]');
+  const label = document.querySelector<HTMLElement>('[data-ambient-label]');
+  if (!player || !audio || !button || !label) return;
+
+  const storageKey = 'gt-ambient-audio';
+  const playLabel = button.getAttribute('data-label-play') || 'Play music';
+  const pauseLabel = button.getAttribute('data-label-pause') || 'Pause music';
+  audio.volume = 0.35;
+
+  const setState = (playing: boolean) => {
+    player.dataset.state = playing ? 'playing' : 'paused';
+    button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+    label.textContent = playing ? pauseLabel : playLabel;
+  };
+
+  const playAudio = async () => {
+    try {
+      await audio.play();
+      setState(true);
+      localStorage.setItem(storageKey, 'on');
+    } catch {
+      setState(false);
+      localStorage.setItem(storageKey, 'off');
+    }
+  };
+
+  const pauseAudio = () => {
+    audio.pause();
+    setState(false);
+    localStorage.setItem(storageKey, 'off');
+  };
+
+  button.addEventListener('click', () => {
+    if (audio.paused) {
+      void playAudio();
+    } else {
+      pauseAudio();
+    }
+  });
+
+  audio.addEventListener('play', () => setState(true));
+  audio.addEventListener('pause', () => setState(false));
+
+  if (localStorage.getItem(storageKey) === 'on') {
+    void playAudio();
+  } else {
+    setState(false);
+  }
+}
+
 function initMain() {
   initEntranceAnimations();
   initContactForm();
   initEmailObfuscation();
   initHeroFade();
+  initAmbientAudio();
 }
 
 if (document.readyState === 'loading') {

@@ -202,17 +202,16 @@ function initAmbientAudio() {
   }
 }
 
-function initMain() {
+// Re-run on every page (entrance animations, forms, obfuscation, hero)
+document.addEventListener('astro:page-load', () => {
   initEntranceAnimations();
   initContactForm();
   initEmailObfuscation();
   initHeroFade();
+});
+
+// Run only once — player and cursor persist across transitions
+document.addEventListener('astro:page-load', () => {
   initCursorCandle();
   initAmbientAudio();
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initMain, { once: true });
-} else {
-  initMain();
-}
+}, { once: true });

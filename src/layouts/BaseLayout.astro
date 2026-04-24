@@ -2,6 +2,7 @@
 /**
  * BaseLayout.astro - gˆ¢wny layout dla wszystkich stron G¢ra Trolla.
  */
+import { ViewTransitions } from 'astro:transitions';
 import SEOHead from '../components/SEOHead.astro';
 import '../styles/main.css';
 
@@ -60,6 +61,8 @@ const {
       <slot name="head" />
     </SEOHead>
 
+    <ViewTransitions />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -102,13 +105,14 @@ const {
     </style>
   </head>
   <body>
-    <div class="cursor-candle" data-cursor-candle aria-hidden="true"></div>
+    <div class="cursor-candle" data-cursor-candle aria-hidden="true" transition:persist></div>
     <slot />
 
     <div
       class="ambient-player"
       data-ambient-player
       data-state="paused"
+      transition:persist
       aria-label={lang === 'pl' ? 'Odtwarzacz muzyki tła' : 'Background music player'}
     >
       <audio

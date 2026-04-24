@@ -165,10 +165,6 @@ if (dataEl) {
       render();
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initConcerts, { once: true });
-    } else {
-      initConcerts();
-    }
+    document.addEventListener('astro:page-load', initConcerts, { once: true });
   }
 }

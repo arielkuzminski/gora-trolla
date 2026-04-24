@@ -63,24 +63,3 @@ document.querySelectorAll<HTMLAnchorElement>('.nav__link').forEach((link) => {
   }
 });
 
-if (document.startViewTransition) {
-  document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((link) => {
-    const hrefAttr = link.getAttribute('href');
-    if (!hrefAttr) return;
-
-    if (
-      link.hostname === location.hostname &&
-      !hrefAttr.startsWith('#') &&
-      link.target !== '_blank'
-    ) {
-      link.addEventListener('click', (event) => {
-        const href = link.href;
-        if (href === location.href) return;
-        event.preventDefault();
-        document.startViewTransition?.(() => {
-          location.href = href;
-        });
-      });
-    }
-  });
-}

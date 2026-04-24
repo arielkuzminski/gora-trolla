@@ -117,10 +117,8 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
       window.addEventListener('resize', resize, { passive: true });
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', startParticles, { once: true });
-      } else {
-        startParticles();
+      document.addEventListener('astro:page-load', startParticles, { once: true });
+      {
       }
 
       document.addEventListener('visibilitychange', () => {

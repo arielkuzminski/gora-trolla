@@ -158,8 +158,4 @@ function initLightbox() {
 
 window.GoraTrollaLightbox = { open, close };
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initLightbox, { once: true });
-} else {
-  initLightbox();
-}
+document.addEventListener('astro:page-load', initLightbox);

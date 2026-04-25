@@ -9,12 +9,12 @@ const jsonLd = musicians.map((musician) => ({
   name: musician.name,
   jobTitle: musician.instruments,
   description: musician.bio.pl,
-  image: musician.image ? `https://goratrolla.pl${musician.image}` : undefined,
+  image: musician.image ? `https://www.gora-trolla.pl${musician.image}` : undefined,
   sameAs: musician.sameAs,
   memberOf: {
     '@type': 'MusicGroup',
     name: 'Góra Trolla',
-    url: 'https://goratrolla.pl',
+    url: 'https://www.gora-trolla.pl',
   },
 }));
 ---
@@ -24,11 +24,11 @@ const jsonLd = musicians.map((musician) => ({
   description="Poznaj historię i muzyków Góry Trolla - zespołu muzyki dawnej z Trójmiasta. Grajkowie specjalizujący się w muzyce średniowiecznej, renesansowej i barokowej."
   lang="pl"
   currentPage="about"
-  canonicalUrl="https://goratrolla.pl/o-nas/"
+  canonicalUrl="https://www.gora-trolla.pl/o-nas/"
   ogLocale="pl_PL"
   alternates={{
-    pl: 'https://goratrolla.pl/o-nas/',
-    en: 'https://goratrolla.pl/en/about/',
+    pl: 'https://www.gora-trolla.pl/o-nas/',
+    en: 'https://www.gora-trolla.pl/en/about/',
   }}
   ogTitle="O Nas - Góra Trolla"
   ogDescription="Poznaj historię i muzyków Góry Trolla."

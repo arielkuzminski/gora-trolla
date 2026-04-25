@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /assets/fonts/
 
-Sitemap: https://goratrolla.pl/sitemap.xml
+Sitemap: https://www.gora-trolla.pl/sitemap-index.xml

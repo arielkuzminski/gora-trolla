@@ -6,59 +6,67 @@ import path from 'node:path';
 
 const sitemapEntries = [
   {
-    loc: 'https://goratrolla.pl/',
+    loc: 'https://www.gora-trolla.pl/',
     links: [
-      { url: 'https://goratrolla.pl/', lang: 'pl' },
-      { url: 'https://goratrolla.pl/en/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/', lang: 'pl' },
+      { url: 'https://www.gora-trolla.pl/en/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/', lang: 'x-default' },
     ],
   },
   {
-    loc: 'https://goratrolla.pl/en/',
+    loc: 'https://www.gora-trolla.pl/en/',
     links: [
-      { url: 'https://goratrolla.pl/', lang: 'pl' },
-      { url: 'https://goratrolla.pl/en/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/', lang: 'pl' },
+      { url: 'https://www.gora-trolla.pl/en/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/', lang: 'x-default' },
     ],
   },
   {
-    loc: 'https://goratrolla.pl/o-nas/',
+    loc: 'https://www.gora-trolla.pl/o-nas/',
     links: [
-      { url: 'https://goratrolla.pl/o-nas/', lang: 'pl' },
-      { url: 'https://goratrolla.pl/en/about/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/o-nas/', lang: 'pl' },
+      { url: 'https://www.gora-trolla.pl/en/about/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/o-nas/', lang: 'x-default' },
     ],
   },
   {
-    loc: 'https://goratrolla.pl/en/about/',
+    loc: 'https://www.gora-trolla.pl/en/about/',
     links: [
-      { url: 'https://goratrolla.pl/o-nas/', lang: 'pl' },
-      { url: 'https://goratrolla.pl/en/about/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/o-nas/', lang: 'pl' },
+      { url: 'https://www.gora-trolla.pl/en/about/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/o-nas/', lang: 'x-default' },
     ],
   },
   {
-    loc: 'https://goratrolla.pl/koncerty/',
+    loc: 'https://www.gora-trolla.pl/koncerty/',
     links: [
-      { url: 'https://goratrolla.pl/koncerty/', lang: 'pl' },
-      { url: 'https://goratrolla.pl/en/concerts/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/koncerty/', lang: 'pl' },
+      { url: 'https://www.gora-trolla.pl/en/concerts/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/koncerty/', lang: 'x-default' },
     ],
   },
   {
-    loc: 'https://goratrolla.pl/en/concerts/',
+    loc: 'https://www.gora-trolla.pl/en/concerts/',
     links: [
-      { url: 'https://goratrolla.pl/koncerty/', lang: 'pl' },
-      { url: 'https://goratrolla.pl/en/concerts/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/koncerty/', lang: 'pl' },
+      { url: 'https://www.gora-trolla.pl/en/concerts/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/koncerty/', lang: 'x-default' },
     ],
   },
   {
-    loc: 'https://goratrolla.pl/kontakt/',
+    loc: 'https://www.gora-trolla.pl/kontakt/',
     links: [
-      { url: 'https://goratrolla.pl/kontakt/', lang: 'pl' },
-      { url: 'https://goratrolla.pl/en/contact/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/kontakt/', lang: 'pl' },
+      { url: 'https://www.gora-trolla.pl/en/contact/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/kontakt/', lang: 'x-default' },
     ],
   },
   {
-    loc: 'https://goratrolla.pl/en/contact/',
+    loc: 'https://www.gora-trolla.pl/en/contact/',
     links: [
-      { url: 'https://goratrolla.pl/kontakt/', lang: 'pl' },
-      { url: 'https://goratrolla.pl/en/contact/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/kontakt/', lang: 'pl' },
+      { url: 'https://www.gora-trolla.pl/en/contact/', lang: 'en' },
+      { url: 'https://www.gora-trolla.pl/kontakt/', lang: 'x-default' },
     ],
   },
 ];
@@ -99,7 +107,7 @@ const patchSitemapIntegration = {
       const sitemapPath = path.join(fileURLToPath(dir), 'sitemap-0.xml');
       const current = await readFile(sitemapPath, 'utf8');
 
-      if (!current.includes('https://goratrolla.pl/o-nas/')) {
+      if (!current.includes('https://www.gora-trolla.pl/o-nas/')) {
         return;
       }
 
@@ -109,7 +117,7 @@ const patchSitemapIntegration = {
 };
 
 export default defineConfig({
-  site: 'https://goratrolla.pl',
+  site: 'https://www.gora-trolla.pl',
   output: 'static',
   integrations: [
     sitemap({

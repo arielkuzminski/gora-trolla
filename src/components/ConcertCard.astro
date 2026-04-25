@@ -69,14 +69,14 @@ const moreLabel = lang === 'pl' ? 'Szczegóły' : 'Details';
 
     {concert.poster && (
       <div class="concert-card__footer">
-        <a
-          href="#"
+        <button
+          type="button"
           class="btn btn--ghost btn--sm"
           data-poster={concert.poster}
           data-poster-title={title}
         >
           {moreLabel} →
-        </a>
+        </button>
       </div>
     )}
   </div>
@@ -86,7 +86,7 @@ const moreLabel = lang === 'pl' ? 'Szczegóły' : 'Details';
 
 <script>
   document.addEventListener('click', (e) => {
-    const btn = (e.target as Element)?.closest<HTMLAnchorElement>('a[data-poster]');
+    const btn = (e.target as Element)?.closest<HTMLElement>('[data-poster]');
     if (!btn) return;
     e.preventDefault();
     window.GoraTrollaLightbox?.open(

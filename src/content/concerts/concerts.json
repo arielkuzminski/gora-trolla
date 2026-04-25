@@ -19,6 +19,194 @@
     "city": "Bytów"
   },
   {
+    "id": "2018-05-18-poznan-pyrkon",
+    "title": { "pl": "Pyrkon 2018 — koncert dla Blizzard Entertainment", "en": "Pyrkon 2018 — Concert for Blizzard Entertainment" },
+    "date": "2018-05-18T12:00:00",
+    "venue": { "pl": "Pyrkon — Centrum Targowo-Kongresowe MTP", "en": "Pyrkon — Poznań International Fair" },
+    "city": "Poznań",
+    "description": {
+      "pl": "Występ na największym polskim festiwalu fantastyki — Pyrkonie — z okazji promocji gry Hearthstone przez Blizzard Entertainment. Jeden z przełomowych momentów w historii zespołu, który otworzył Górze Trolla drzwi do szerszego koncertowania po całej Polsce.",
+      "en": "A performance at Pyrkon — Poland's largest fantasy convention — as part of Blizzard Entertainment's Hearthstone promotion. A milestone that opened the door to tours across the whole of Poland."
+    }
+  },
+  {
+    "id": "2022-06-18-luzino",
+    "title": { "pl": "Luzino", "en": "Luzino" },
+    "date": "2022-06-18T12:00:00",
+    "venue": { "pl": "Luzino", "en": "Luzino" },
+    "city": "Luzino"
+  },
+  {
+    "id": "2022-03-04-oria-magic-house",
+    "title": { "pl": "Oria Magic House", "en": "Oria Magic House" },
+    "date": "2022-03-04T12:00:00",
+    "venue": { "pl": "Oria Magic House", "en": "Oria Magic House" },
+    "city": "Oria Magic House"
+  },
+  {
+    "id": "2022-08-06-swiecino",
+    "title": { "pl": "Bitwa pod Świecinem 2022", "en": "Battle of Świecino 2022" },
+    "date": "2022-08-06T12:00:00",
+    "venue": { "pl": "Świecino", "en": "Świecino" },
+    "city": "Świecino",
+    "description": {
+      "pl": "Kolejna edycja rekonstrukcji historycznej bitwy pod Świecinem — jednego z kluczowych starć wojny trzynastoletniej.",
+      "en": "Another edition of the historical reenactment of the Battle of Świecino — one of the key engagements of the Thirteen Years' War."
+    }
+  },
+  {
+    "id": "2022-06-04-lad",
+    "title": { "pl": "Ląd nad Wartą", "en": "Lad nad Warta" },
+    "date": "2022-06-04T12:00:00",
+    "venue": { "pl": "Opactwo Cystersów w Lądzie", "en": "Cistercian Abbey in Lad" },
+    "city": "Ląd nad Wartą",
+    "description": {
+      "pl": "Koncert przy średniowiecznym opactwie cystersów nad Wartą — jednym z najpiękniejszych romańskich kompleksów klasztornych w Polsce.",
+      "en": "A concert beside the medieval Cistercian abbey on the Warta river — one of the finest Romanesque monastic complexes in Poland."
+    }
+  },
+  {
+    "id": "2022-05-28-choczewo",
+    "title": { "pl": "Choczewo", "en": "Choczewo" },
+    "date": "2022-05-28T12:00:00",
+    "venue": { "pl": "Choczewo", "en": "Choczewo" },
+    "city": "Choczewo"
+  },
+  {
+    "id": "2022-05-14-oborniki",
+    "title": { "pl": "Radzim / Gołaszyn / Oborniki", "en": "Radzim / Gołaszyn / Oborniki" },
+    "date": "2022-05-14T12:00:00",
+    "venue": { "pl": "Oborniki i okolice", "en": "Oborniki and surroundings" },
+    "city": "Oborniki",
+    "description": {
+      "pl": "Wyprawa koncertowa w Wielkopolsce — Radzim, Gołaszyn i Oborniki.",
+      "en": "A concert tour across Wielkopolska — Radzim, Gołaszyn and Oborniki."
+    }
+  },
+  {
+    "id": "2019-05-26-gdansk-swietomiasta",
+    "title": { "pl": "Święto Miasta Gdańska", "en": "Gdańsk City Festival" },
+    "date": "2019-05-26T12:00:00",
+    "venue": { "pl": "Gdańsk", "en": "Gdańsk" },
+    "city": "Gdańsk"
+  },
+  {
+    "id": "2020-01-25-gdynia",
+    "title": { "pl": "Koncert w Gdyni", "en": "Concert in Gdynia" },
+    "date": "2020-01-25T12:00:00",
+    "venue": { "pl": "Gdynia", "en": "Gdynia" },
+    "city": "Gdynia"
+  },
+  {
+    "id": "2019-07-07-gizycko",
+    "title": { "pl": "Giżycko", "en": "Giżycko" },
+    "date": "2019-07-07T12:00:00",
+    "venue": { "pl": "Giżycko", "en": "Giżycko" },
+    "city": "Giżycko"
+  },
+  {
+    "id": "2018-09-27-plock",
+    "title": { "pl": "Płock", "en": "Płock" },
+    "date": "2018-09-27T12:00:00",
+    "venue": { "pl": "Płock", "en": "Płock" },
+    "city": "Płock"
+  },
+  {
+    "id": "2018-07-28-bytow-zamek",
+    "title": { "pl": "Zamek w Bytowie", "en": "Bytów Castle" },
+    "date": "2018-07-28T12:00:00",
+    "venue": { "pl": "Zamek w Bytowie", "en": "Bytów Castle" },
+    "city": "Bytów"
+  },
+  {
+    "id": "2018-07-06-krokowa",
+    "title": { "pl": "Krokowa", "en": "Krokowa" },
+    "date": "2018-07-06T12:00:00",
+    "venue": { "pl": "Krokowa", "en": "Krokowa" },
+    "city": "Krokowa"
+  },
+  {
+    "id": "2018-06-10-warszawa-jaslo",
+    "title": { "pl": "Warszawa / Jasło", "en": "Warsaw / Jasło" },
+    "date": "2018-06-10T12:00:00",
+    "venue": { "pl": "Warszawa / Jasło", "en": "Warsaw / Jasło" },
+    "city": "Warszawa"
+  },
+  {
+    "id": "2018-05-18-paczkow",
+    "title": { "pl": "Paczków", "en": "Paczków" },
+    "date": "2018-05-18T12:00:00",
+    "venue": { "pl": "Paczków", "en": "Paczków" },
+    "city": "Paczków"
+  },
+  {
+    "id": "2018-08-11-biecz",
+    "title": { "pl": "Biecz", "en": "Biecz" },
+    "date": "2018-08-11T12:00:00",
+    "venue": { "pl": "Biecz", "en": "Biecz" },
+    "city": "Biecz"
+  },
+  {
+    "id": "2018-03-22-gdansk-kosciol",
+    "title": { "pl": "Koncert w kościele — Gdańsk", "en": "Church Concert — Gdańsk" },
+    "date": "2018-03-22T12:00:00",
+    "venue": { "pl": "Kościół, Gdańsk", "en": "Church, Gdańsk" },
+    "city": "Gdańsk"
+  },
+  {
+    "id": "2017-07-29-gdansk-jarmark-dominikanski",
+    "title": { "pl": "Jarmark Dominikański", "en": "Dominican Fair" },
+    "date": "2017-07-29T12:00:00",
+    "venue": { "pl": "Gdańsk — Jarmark Dominikański", "en": "Gdańsk — Dominican Fair" },
+    "city": "Gdańsk",
+    "description": {
+      "pl": "Jeden z największych jarmarków w Polsce — coroczne wydarzenie przy kościele św. Dominika w Gdańsku.",
+      "en": "One of Poland's largest fairs — an annual event by St. Dominic's Church in Gdańsk."
+    }
+  },
+  {
+    "id": "2017-07-29-bytow-turniej",
+    "title": { "pl": "Turniej/Bitwa na Zamku w Bytowie", "en": "Tournament/Battle at Bytów Castle" },
+    "date": "2017-07-29T12:00:00",
+    "venue": { "pl": "Zamek w Bytowie", "en": "Bytów Castle" },
+    "city": "Bytów"
+  },
+  {
+    "id": "2017-04-29-sobotka-sleza",
+    "title": { "pl": "Sobótka koło Ślęży", "en": "Midsummer Feast near Ślęża" },
+    "date": "2017-04-29T12:00:00",
+    "venue": { "pl": "Okolice Ślęży", "en": "Surroundings of Ślęża" },
+    "city": "Sobótka"
+  },
+  {
+    "id": "2016-08-14-glucholazy",
+    "title": { "pl": "Głuchołazy", "en": "Głuchołazy" },
+    "date": "2016-08-14T12:00:00",
+    "venue": { "pl": "Głuchołazy", "en": "Głuchołazy" },
+    "city": "Głuchołazy"
+  },
+  {
+    "id": "2016-07-31-kartuzy",
+    "title": { "pl": "Kartuzy", "en": "Kartuzy" },
+    "date": "2016-07-31T12:00:00",
+    "venue": { "pl": "Kartuzy", "en": "Kartuzy" },
+    "city": "Kartuzy"
+  },
+  {
+    "id": "2016-07-23-chojnice",
+    "title": { "pl": "Chojnice", "en": "Chojnice" },
+    "date": "2016-07-23T12:00:00",
+    "venue": { "pl": "Chojnice", "en": "Chojnice" },
+    "city": "Chojnice"
+  },
+  {
+    "id": "2018-07-21-drawsko-nad-notecia",
+    "title": { "pl": "Drawsko nad Notecią", "en": "Drawsko nad Notecią" },
+    "date": "2018-07-21T12:00:00",
+    "venue": { "pl": "Drawsko nad Notecią", "en": "Drawsko nad Notecią" },
+    "city": "Drawsko nad Notecią"
+  },
+  {
     "id": "2020-09-09-gniew",
     "title": { "pl": "Festiwal Muzyki w Gniewie", "en": "Music Festival in Gniew" },
     "date": "2020-09-09T12:00:00",
@@ -28,6 +216,13 @@
       "pl": "Festiwal muzyki w Gniewie.",
       "en": "Music festival in Gniew."
     }
+  },
+  {
+    "id": "2021-05-22-ostroleka",
+    "title": { "pl": "Ostrołęka", "en": "Ostrołęka" },
+    "date": "2021-05-22T12:00:00",
+    "venue": { "pl": "Ostrołęka", "en": "Ostrołęka" },
+    "city": "Ostrołęka"
   },
   {
     "id": "2021-08-07-swiecino",

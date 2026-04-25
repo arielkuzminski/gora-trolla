@@ -25,9 +25,19 @@
 
 .nav.scrolled {
   height: var(--nav-height-sm);
+  box-shadow: 0 1px 0 var(--color-glass-border), var(--shadow-card);
+}
+
+/* Pseudo-element carries the blur so backdrop-filter is NOT on .nav itself.
+   backdrop-filter on a direct ancestor makes it the containing block for
+   position:fixed children — which breaks the full-screen mobile overlay. */
+.nav.scrolled::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: rgba(18, 16, 13, 0.92);
   backdrop-filter: var(--glass-blur) var(--glass-saturate);
-  box-shadow: 0 1px 0 var(--color-glass-border), var(--shadow-card);
+  z-index: -1;
 }
 
 .nav__inner {

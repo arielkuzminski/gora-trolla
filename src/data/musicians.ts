@@ -82,11 +82,11 @@ export const musicians: Musician[] = [
     ]
   },
   {
-    name: 'Jasio',
+    name: 'Jaśko',
     instruments: 'Człowiek orkiestra',
     bio: {
-      pl: 'Fenomen natury. Jasio gra na wszystkim, czego akurat nikt inny nie gra - i robi to lepiej. Jego talenty muzyczne wymykają się wszelkiej klasyfikacji. Legenda.',
-      en: 'A force of nature. Jasio plays whatever nobody else is playing at the moment, and somehow does it better. His musical gifts defy classification. A legend.'
+      pl: 'Fenomen natury. Jaśko gra na wszystkim, czego akurat nikt inny nie gra - i robi to lepiej. Jego talenty muzyczne wymykają się wszelkiej klasyfikacji. GOAT.',
+      en: 'A force of nature. Jaśko plays whatever nobody else is playing at the moment, and somehow does it better. His musical gifts defy classification. GOAT.'
     },
     image: '/media/jasio.png',
     sameAs: [

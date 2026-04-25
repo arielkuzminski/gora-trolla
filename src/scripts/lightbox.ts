@@ -158,4 +158,11 @@ function initLightbox() {
 
 window.GoraTrollaLightbox = { open, close };
 
+function ensureInDocument() {
+  if (!document.body.contains(lightbox)) {
+    document.body.appendChild(lightbox);
+  }
+}
+
+document.addEventListener('astro:after-swap', ensureInDocument);
 document.addEventListener('astro:page-load', initLightbox);

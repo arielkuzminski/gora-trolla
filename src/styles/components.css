@@ -724,6 +724,14 @@
   border-top: 1px solid rgba(212, 168, 67, 0.1);
 }
 
+#concert-list[data-filter="upcoming"] .concert-card[data-upcoming="0"] {
+  display: none;
+}
+
+#concert-list[data-filter="past"] .concert-card[data-upcoming="1"] {
+  display: none;
+}
+
 /* Tag badge */
 
 .tag {

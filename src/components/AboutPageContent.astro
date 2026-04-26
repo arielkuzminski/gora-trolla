@@ -3,6 +3,7 @@ import Footer from './Footer.astro';
 import GalleryItem from './GalleryItem.astro';
 import MusicianCard from './MusicianCard.astro';
 import Nav from './Nav.astro';
+import PartnersMarquee from './PartnersMarquee.astro';
 import { musicians } from '../data/musicians';
 
 interface Props {
@@ -315,6 +316,7 @@ const t = copy[lang];
     </div>
   </section>
   </div>
+  <PartnersMarquee lang={lang} />
 </main>
 
 <Footer lang={lang} />

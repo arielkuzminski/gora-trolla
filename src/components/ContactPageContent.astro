@@ -1,6 +1,7 @@
 ---
 import Footer from './Footer.astro';
 import Nav from './Nav.astro';
+import PartnersMarquee from './PartnersMarquee.astro';
 
 interface Props {
   lang: 'pl' | 'en';
@@ -270,6 +271,7 @@ const t = copy[lang];
     </div>
   </section>
   </div>
+  <PartnersMarquee lang={lang} />
 </main>
 
 <Footer lang={lang} />

@@ -15,5 +15,8 @@
     "@fontsource/eb-garamond": "^5.2.7",
     "@fontsource/medievalsharp": "^5.2.8",
     "astro": "^5.7.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }

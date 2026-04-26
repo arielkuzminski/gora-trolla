@@ -1258,10 +1258,11 @@ blockquote,
   object-fit: contain;
   filter: grayscale(1) sepia(1) saturate(2.5) brightness(1.1);
   opacity: 0.75;
-  transition: filter 0.35s ease, opacity 0.35s ease;
+  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.2s ease;
 }
 
 .partners__logo:hover img {
   filter: none;
   opacity: 1;
+  transform: scale(1.5);
 }

@@ -1229,39 +1229,21 @@ blockquote,
   }
 }
 
-/* ─── Partners Marquee ─────────────────────────────────────── */
+/* ─── Partners Wall ─────────────────────────────────────── */
 .section--partners {
   padding-block: var(--space-12);
-  overflow: hidden;
 }
 
-.partners-track-wrapper {
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-}
-
-@keyframes partners-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.partners-track {
+.partners-wall {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-16);
-  width: max-content;
-  animation: partners-scroll 35s linear infinite;
-  will-change: transform;
-}
-
-.partners-track:hover {
-  animation-play-state: paused;
+  justify-content: center;
+  gap: var(--space-10) var(--space-12);
 }
 
 .partners__logo {
-  flex-shrink: 0;
-  height: 52px;
+  height: 48px;
   display: flex;
   align-items: center;
 }
@@ -1269,10 +1251,10 @@ blockquote,
 .partners__logo img {
   height: 100%;
   width: auto;
-  max-width: 160px;
+  max-width: 140px;
   object-fit: contain;
   filter: grayscale(1) sepia(1) saturate(2.5) brightness(1.1);
-  opacity: 0.8;
+  opacity: 0.75;
   transition: filter 0.35s ease, opacity 0.35s ease;
 }
 

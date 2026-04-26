@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
+    "@fontsource/cinzel": "^5.2.8",
+    "@fontsource/cinzel-decorative": "^5.2.8",
+    "@fontsource/eb-garamond": "^5.2.7",
+    "@fontsource/medievalsharp": "^5.2.8",
     "astro": "^5.7.0"
   }
 }

@@ -36,6 +36,8 @@ const jsonLdItems = jsonLd
     ? jsonLd
     : [jsonLd]
   : [];
+
+const ga4Id = import.meta.env.PUBLIC_GA4_ID;
 ---
 
 <!-- Primary meta -->
@@ -74,6 +76,26 @@ const jsonLdItems = jsonLd
 {jsonLdItems.map((schema) => (
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 ))}
+
+<!-- Google Analytics 4 (Consent Mode v2 — analytics_storage denied by default; cookieless ping mode until consent granted) -->
+{ga4Id && (
+  <>
+    <script is:inline define:vars={{ ga4Id }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        wait_for_update: 500,
+      });
+      gtag('js', new Date());
+      gtag('config', ga4Id, { anonymize_ip: true });
+    </script>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+  </>
+)}
 
 <!-- Extra head content (e.g. page-specific JSON-LD) -->
 <slot />

@@ -29,7 +29,7 @@ const logos: { src: string; alt: string; wide?: boolean }[] = [
     <div class="partners-wall">
       {logos.map((logo) => (
         <div class="partners__logo">
-          <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" style={logo.wide ? 'max-width:180px' : undefined} />
+          <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" style={logo.wide ? 'max-width:200px;height:60px' : undefined} />
         </div>
       ))}
     </div>

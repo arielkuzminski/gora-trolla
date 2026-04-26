@@ -7,9 +7,9 @@ const { lang } = Astro.props;
 
 const label = lang === 'pl' ? 'Partnerzy i organizatorzy' : 'Partners & organisers';
 
-const logos = [
+const logos: { src: string; alt: string; wide?: boolean }[] = [
   { src: '/assets/images/partners/pyrkon.svg',          alt: 'Pyrkon' },
-  { src: '/assets/images/partners/scyzorykon.svg',      alt: 'Scyzorykon' },
+  { src: '/assets/images/partners/scyzorykon.svg',      alt: 'Scyzorykon', wide: true },
   { src: '/assets/images/partners/wosp.webp',           alt: 'Wielka Orkiestra Świątecznej Pomocy' },
   { src: '/assets/images/partners/jarmark-gdansk.webp', alt: 'Jarmark Dominikański Gdańsk' },
   { src: '/assets/images/partners/gdansk.webp',         alt: 'Miasto Gdańsk' },
@@ -29,7 +29,7 @@ const logos = [
     <div class="partners-wall">
       {logos.map((logo) => (
         <div class="partners__logo">
-          <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
+          <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" style={logo.wide ? 'max-width:180px' : undefined} />
         </div>
       ))}
     </div>

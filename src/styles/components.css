@@ -1239,11 +1239,11 @@ blockquote,
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: var(--space-10) var(--space-12);
+  gap: var(--space-8) var(--space-10);
 }
 
 .partners__logo {
-  height: 48px;
+  height: 40px;
   display: flex;
   align-items: center;
 }
@@ -1251,7 +1251,7 @@ blockquote,
 .partners__logo img {
   height: 100%;
   width: auto;
-  max-width: 140px;
+  max-width: 120px;
   object-fit: contain;
   filter: grayscale(1) sepia(1) saturate(2.5) brightness(1.1);
   opacity: 0.75;

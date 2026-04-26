@@ -26,13 +26,13 @@ const logos: { src: string; alt: string; wide?: boolean }[] = [
     <div style="text-align:center;margin-bottom:var(--space-10)" data-animate="fade-up">
       <p id="partners-label" class="section-label" style="justify-content:center">{label}</p>
     </div>
+  </div>
 
-    <div class="partners-wall">
-      {logos.map((logo) => (
-        <div class="partners__logo">
-          <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" style={logo.wide ? 'max-width:200px;height:60px' : undefined} />
-        </div>
-      ))}
-    </div>
+  <div class="partners-wall">
+    {logos.map((logo) => (
+      <div class="partners__logo">
+        <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" style={logo.wide ? 'max-width:200px;height:60px' : undefined} />
+      </div>
+    ))}
   </div>
 </section>

@@ -1240,6 +1240,9 @@ blockquote,
   align-items: center;
   justify-content: center;
   gap: var(--space-8) var(--space-10);
+  padding-inline: var(--space-8);
+  max-width: 1400px;
+  margin-inline: auto;
 }
 
 .partners__logo {

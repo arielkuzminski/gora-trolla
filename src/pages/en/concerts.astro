@@ -20,6 +20,8 @@ const allConcerts = concertEntries
 const now = new Date();
 now.setHours(0, 0, 0, 0);
 
+const SITE_URL = 'https://www.gora-trolla.pl';
+
 const jsonLd = allConcerts
   .filter((concert) => new Date(concert.date).getTime() >= now.getTime())
   .map((concert) => ({
@@ -29,6 +31,9 @@ const jsonLd = allConcerts
     startDate: concert.date,
     eventStatus: 'https://schema.org/EventScheduled',
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    ...(concert.description?.en && { description: concert.description.en }),
+    ...(concert.poster && { image: `${SITE_URL}${concert.poster}` }),
+    url: `${SITE_URL}/en/concerts/#${concert.id}`,
     location: {
       '@type': 'Place',
       name: concert.venue.en,
@@ -41,12 +46,12 @@ const jsonLd = allConcerts
     performer: {
       '@type': 'MusicGroup',
       name: 'Góra Trolla',
-      url: 'https://www.gora-trolla.pl',
+      url: SITE_URL,
     },
     organizer: {
       '@type': 'MusicGroup',
       name: 'Góra Trolla',
-      url: 'https://www.gora-trolla.pl',
+      url: SITE_URL,
     },
   }));
 ---

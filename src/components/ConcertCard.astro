@@ -41,6 +41,7 @@ const moreLabel = lang === 'pl' ? 'Szczegóły' : 'Details';
 ---
 
 <article
+  id={concert.id}
   class={`concert-card${upcoming ? '' : ' concert-card--past'}`}
   data-concert-date={concert.date}
   data-upcoming={upcoming ? '1' : '0'}

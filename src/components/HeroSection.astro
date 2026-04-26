@@ -12,11 +12,14 @@ interface Props {
   /** Secondary CTA */
   cta2Label: string;
   cta2Href: string;
+  /** Optional booking CTA rendered below the main buttons */
+  cta3Label?: string;
+  cta3Href?: string;
   /** aria-label for the <section> */
   ariaLabel: string;
 }
 
-const { tagline, heading, subheading, cta1Label, cta1Href, cta2Label, cta2Href, ariaLabel } = Astro.props;
+const { tagline, heading, subheading, cta1Label, cta1Href, cta2Label, cta2Href, cta3Label, cta3Href, ariaLabel } = Astro.props;
 ---
 
 <section class="hero" aria-label={ariaLabel}>
@@ -87,13 +90,27 @@ style="width:100%;height:100%;object-fit:cover;object-position:center 30%;opacit
     </div>
 
     <!-- CTAs -->
-    <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap;animation:fadeUp 1s ease 0.8s both">
-      <a href={cta1Href} class="btn btn--primary btn--shimmer" data-animate>
-        {cta1Label}
-      </a>
-      <a href={cta2Href} class="btn btn--ghost" data-animate>
-        {cta2Label}
-      </a>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:var(--space-4);animation:fadeUp 1s ease 0.8s both">
+      <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap">
+        <a href={cta1Href} class="btn btn--primary btn--shimmer" data-animate>
+          {cta1Label}
+        </a>
+        <a href={cta2Href} class="btn btn--ghost" data-animate>
+          {cta2Label}
+        </a>
+      </div>
+      {cta3Label && cta3Href && (
+        <a
+          href={cta3Href}
+          style="display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-heading);font-size:var(--text-sm);letter-spacing:var(--tracking-caps);text-transform:uppercase;color:var(--color-gold-bright);opacity:0.85;transition:opacity 0.2s;text-decoration:none"
+          onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          {cta3Label}
+        </a>
+      )}
     </div>
   </div>
 

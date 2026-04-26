@@ -1266,3 +1266,15 @@ blockquote,
   opacity: 1;
   transform: scale(1.5);
 }
+
+/* Heraldic logos (kolorowe herby/grafiki) — duotone gold filter zachowuje detal */
+.partners__logo--heraldic img {
+  filter: url(#gold-duotone);
+  opacity: 1;
+}
+
+.partners__logo--heraldic:hover img {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.5);
+}

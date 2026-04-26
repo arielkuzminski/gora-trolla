@@ -7,21 +7,36 @@ const { lang } = Astro.props;
 
 const label = lang === 'pl' ? 'Partnerzy i organizatorzy' : 'Partners & organisers';
 
-const logos: { src: string; alt: string; wide?: boolean }[] = [
-  { src: '/assets/images/partners/pyrkon.svg',          alt: 'Pyrkon — Festiwal Fantastyki, partner Góra Trolla' },
-  { src: '/assets/images/partners/scyzorykon.svg',      alt: 'Scyzorykon — Zlot Miłośników Historii, partner Góra Trolla', wide: true },
-  { src: '/assets/images/partners/wosp.webp',           alt: 'Wielka Orkiestra Świątecznej Pomocy — koncert Góra Trolla' },
-  { src: '/assets/images/partners/jarmark-gdansk.webp', alt: 'Jarmark Dominikański w Gdańsku — partner muzyczny Góra Trolla' },
-  { src: '/assets/images/partners/gdansk.webp',         alt: 'Miasto Gdańsk — organizator koncertów muzyki dawnej' },
-  { src: '/assets/images/partners/rumia.webp',          alt: 'Miasto Rumia — partner i organizator wydarzeń Góra Trolla' },
-  { src: '/assets/images/partners/gmina-choczewo.webp', alt: 'Gmina Choczewo — partner kulturalny Góra Trolla' },
-  { src: '/assets/images/partners/gmina-krokowa.webp',  alt: 'Gmina Krokowa — partner kulturalny Góra Trolla' },
-  { src: '/assets/images/partners/zamek-bytow.webp',    alt: 'Zamek w Bytowie — scena historyczna koncertów Góra Trolla' },
-  { src: '/assets/images/partners/folkowe-ucho.webp',   alt: 'Folkowe Ucho Festiwal — partner Góra Trolla' },
+const logos: { src: string; alt: string; wide?: boolean; heraldic?: boolean }[] = [
+  { src: '/assets/images/partners/pyrkon.svg',             alt: 'Pyrkon — Festiwal Fantastyki, partner Góra Trolla' },
+  { src: '/assets/images/partners/scyzorykon.svg',         alt: 'Scyzorykon — Zlot Miłośników Historii, partner Góra Trolla', wide: true },
+  { src: '/assets/images/partners/wosp.webp',              alt: 'Wielka Orkiestra Świątecznej Pomocy — koncert Góra Trolla' },
+  { src: '/assets/images/partners/jarmark-jsd26.webp',     alt: 'Jarmark Dominikański w Gdańsku — partner muzyczny Góra Trolla', heraldic: true },
+  { src: '/assets/images/partners/gdansk-coa-grand.svg',   alt: 'Miasto Gdańsk — organizator koncertów muzyki dawnej', heraldic: true },
+  { src: '/assets/images/partners/rumia.webp',             alt: 'Miasto Rumia — partner i organizator wydarzeń Góra Trolla' },
+  { src: '/assets/images/partners/choczewo-coa.svg',       alt: 'Gmina Choczewo — partner kulturalny Góra Trolla', heraldic: true },
+  { src: '/assets/images/partners/krokowa-coa.svg',        alt: 'Gmina Krokowa — partner kulturalny Góra Trolla', heraldic: true },
+  { src: '/assets/images/partners/zamek-bytow.webp',       alt: 'Zamek w Bytowie — scena historyczna koncertów Góra Trolla' },
+  { src: '/assets/images/partners/folkowe-ucho.webp',      alt: 'Folkowe Ucho Festiwal — partner Góra Trolla' },
 ];
 ---
 
 <section class="section section--partners" aria-labelledby="partners-label">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <!-- Duotone gold-deep (#7a5c1e) -> gold-glow (#f0c060). Zakres dobrany tak zeby
+           tonalnie matchowal Pyrkon (#d4a843, ktory ma sredni luminance), ale zostawia
+           glowe nad jasnymi obszarami zeby tekst/detal byl czytelny. -->
+      <filter id="gold-duotone" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" values="
+          0.138 0.272 0.053 0 0.478
+          0.117 0.230 0.045 0 0.361
+          0.077 0.151 0.029 0 0.118
+          0     0     0     1 0"/>
+      </filter>
+    </defs>
+  </svg>
+
   <div class="container">
     <div style="text-align:center;margin-bottom:var(--space-10)" data-animate="fade-up">
       <p id="partners-label" class="section-label" style="justify-content:center">{label}</p>
@@ -30,7 +45,7 @@ const logos: { src: string; alt: string; wide?: boolean }[] = [
 
   <div class="partners-wall">
     {logos.map((logo) => (
-      <div class="partners__logo">
+      <div class={`partners__logo${logo.heraldic ? ' partners__logo--heraldic' : ''}`}>
         <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" style={logo.wide ? 'max-width:200px;height:60px' : undefined} />
       </div>
     ))}

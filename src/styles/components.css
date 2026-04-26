@@ -1228,3 +1228,54 @@ blockquote,
     transform: translateX(-50%) scale(1.05);
   }
 }
+
+/* ─── Partners Marquee ─────────────────────────────────────── */
+.section--partners {
+  padding-block: var(--space-12);
+  overflow: hidden;
+}
+
+.partners-track-wrapper {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+@keyframes partners-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  width: max-content;
+  animation: partners-scroll 35s linear infinite;
+}
+
+.partners-track:hover {
+  animation-play-state: paused;
+}
+
+.partners__logo {
+  flex-shrink: 0;
+  height: 52px;
+  display: flex;
+  align-items: center;
+}
+
+.partners__logo img {
+  height: 100%;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(5deg);
+  opacity: 0.75;
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+
+.partners__logo:hover img {
+  filter: none;
+  opacity: 1;
+}

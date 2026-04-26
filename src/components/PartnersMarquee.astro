@@ -1,0 +1,37 @@
+---
+interface Props {
+  lang: 'pl' | 'en';
+}
+
+const { lang } = Astro.props;
+
+const label = lang === 'pl' ? 'Partnerzy i organizatorzy' : 'Partners & organisers';
+
+const logos = [
+  { src: '/assets/images/partners/pyrkon.svg',        alt: 'Pyrkon' },
+  { src: '/assets/images/partners/scyzorykon.svg',    alt: 'Scyzorykon' },
+  { src: '/assets/images/partners/wosp.webp',         alt: 'Wielka Orkiestra Świątecznej Pomocy' },
+  { src: '/assets/images/partners/jarmark-gdansk.webp', alt: 'Jarmark Dominikański Gdańsk' },
+  { src: '/assets/images/partners/gdansk.webp',       alt: 'Miasto Gdańsk' },
+  { src: '/assets/images/partners/rumia.webp',        alt: 'Miasto Rumia' },
+  { src: '/assets/images/partners/gmina-choczewo.webp', alt: 'Gmina Choczewo' },
+  { src: '/assets/images/partners/gmina-krokowa.webp',  alt: 'Gmina Krokowa' },
+  { src: '/assets/images/partners/zamek-bytow.webp',  alt: 'Zamek w Bytowie' },
+];
+---
+
+<section class="section section--partners" aria-labelledby="partners-label">
+  <div class="container" style="text-align:center;margin-bottom:var(--space-8)" data-animate="fade-up">
+    <p id="partners-label" class="section-label" style="justify-content:center">{label}</p>
+  </div>
+
+  <div class="partners-track-wrapper">
+    <div class="partners-track" aria-hidden="true">
+      {[...logos, ...logos].map((logo) => (
+        <div class="partners__logo">
+          <img src={logo.src} alt={logo.alt} loading="lazy" decoding="async" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

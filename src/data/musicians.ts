@@ -22,7 +22,6 @@ export const musicians: Musician[] = [
     sameAs: [
       'https://www.facebook.com/goratrolla',
       'https://www.instagram.com/goratrolla',
-      'https://www.youtube.com/watch?v=OgWUrgaBPnU'
     ]
   },
   {
@@ -36,7 +35,6 @@ export const musicians: Musician[] = [
     sameAs: [
       'https://www.facebook.com/goratrolla',
       'https://www.instagram.com/goratrolla',
-      'https://www.youtube.com/watch?v=OgWUrgaBPnU'
     ]
   },
   {
@@ -50,7 +48,6 @@ export const musicians: Musician[] = [
     sameAs: [
       'https://www.facebook.com/goratrolla',
       'https://www.instagram.com/goratrolla',
-      'https://www.youtube.com/watch?v=OgWUrgaBPnU'
     ]
   },
   {
@@ -64,7 +61,6 @@ export const musicians: Musician[] = [
     sameAs: [
       'https://www.facebook.com/goratrolla',
       'https://www.instagram.com/goratrolla',
-      'https://www.youtube.com/watch?v=OgWUrgaBPnU'
     ]
   },
   {
@@ -78,7 +74,6 @@ export const musicians: Musician[] = [
     sameAs: [
       'https://www.facebook.com/goratrolla',
       'https://www.instagram.com/goratrolla',
-      'https://www.youtube.com/watch?v=OgWUrgaBPnU'
     ]
   },
   {
@@ -92,7 +87,6 @@ export const musicians: Musician[] = [
     sameAs: [
       'https://www.facebook.com/goratrolla',
       'https://www.instagram.com/goratrolla',
-      'https://www.youtube.com/watch?v=OgWUrgaBPnU'
     ]
   }
 ];
